@@ -21,7 +21,7 @@ char	*ft_join(char *buffer, char *cup_buffer)
 	return (temp);
 }
 
-char	*ft_delete(char *buffer)
+char	*ft_delete_line(char *buffer)
 {
 	int		i;
 	int		j;
@@ -103,7 +103,7 @@ char	*get_next_line(int fd)
 	if (!buffer)
 		return (NULL);
 	line = ft_line(buffer);
-	buffer = ft_delete(buffer);
+	buffer = ft_delete_line(buffer);
 	return (line);
 }
 /*
