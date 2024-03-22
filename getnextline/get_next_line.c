@@ -14,11 +14,11 @@
 
 char	*ft_join(char *buffer, char *cup_buffer)
 {
-	char	*temp;
+	char	*line;
 
-	temp = ft_strjoin(buffer, cup_buffer);
+	line = ft_strjoin(buffer, cup_buffer);
 	free(buffer);
-	return (temp);
+	return (line);
 }
 
 char	*ft_delete_line(char *buffer)
@@ -27,14 +27,14 @@ char	*ft_delete_line(char *buffer)
 	int		j;
 	char	*line;
 
-	i = 0;
-	while (buffer[i] && buffer[i] != '\n')
-		i++;
-	if (!buffer[i])
+	if (!buffer[0])
 	{
 		free(buffer);
 		return (NULL);
 	}
+	i = 0;
+	while (buffer[i] && buffer[i] != '\n')
+		i++;
 	line = ft_calloc((ft_strlen(buffer) - i + 1), sizeof(char));
 	i++;
 	j = 0;
@@ -49,9 +49,9 @@ char	*ft_line(char *buffer)
 	char	*line;
 	int		i;
 
-	i = 0;
-	if (!buffer[i])
+	if (!buffer[0])
 		return (NULL);
+	i = 0;
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
 	line = ft_calloc(i + 2, sizeof(char));
@@ -71,18 +71,11 @@ char	*read_file(int fd, char *buffer)
 	char	*cup_buffer;
 	int		byte_read;
 
-	if (!buffer)
-		buffer = ft_calloc(1, 1);
 	cup_buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	byte_read = 1;
 	while (byte_read > 0)
 	{
 		byte_read = read(fd, cup_buffer, BUFFER_SIZE);
-		if (byte_read == -1)
-		{
-			free(cup_buffer);
-			return (NULL);
-		}
 		cup_buffer[byte_read] = 0;
 		buffer = ft_join(buffer, cup_buffer);
 		if (ft_strchr(cup_buffer, '\n'))
@@ -99,6 +92,8 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
+	if (!buffer)
+		buffer = ft_calloc(1, 1);
 	buffer = read_file(fd, buffer);
 	if (!buffer)
 		return (NULL);
