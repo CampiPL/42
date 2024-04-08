@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdepka <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 13:49:54 by jdepka            #+#    #+#             */
-/*   Updated: 2024/02/29 13:49:55 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/04/08 12:50:09 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 }
 /*
 int main() {
-    const char *s1 = "  Hello, world!  ";
-    const char *set = "! ";
+    const char *s1 = "";
+    const char *set = "123";
     char *trimmed = ft_strtrim(s1, set);
     if (trimmed != NULL) {
         printf("Trimmed string: %s\n", trimmed);
