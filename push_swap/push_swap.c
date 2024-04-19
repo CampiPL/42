@@ -6,7 +6,7 @@
 /*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 09:35:24 by jdepka            #+#    #+#             */
-/*   Updated: 2024/04/18 18:49:53 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/04/19 11:59:29 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int	main(int argc, char **argv)
 	t_list	**stack_b;
 
 	if (argc < 2)
-		ft_error();
+		exit(0);
 	check_argv(argc, argv);
 	stack_a = (t_list **)malloc(sizeof(t_list));
 	stack_b = (t_list **)malloc(sizeof(t_list));
