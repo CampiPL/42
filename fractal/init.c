@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 12:53:27 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/04/24 14:58:15 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/04/24 17:17:49 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,18 @@ static void	data_init(t_fractal *fractal)
 {
 	fractal->escape_value = 4;
 	fractal->iterations = 42;
+	fractal->shift_x = 0.0;
+	fractal->shift_y = 0.0;
+	fractal->zoom = 1.0;
+}
+
+static void	events_init(t_fractal *fractal)
+{
+	mlx_hook(fractal->mlx_window, KeyPress, KeyPressMask, key_handler, fractal);
+	mlx_hook(fractal->mlx_window, ButtonPress, ButtonPressMask,
+		mouse_handler, fractal);
+	mlx_hook(fractal->mlx_window, DestroyNotify, StructureNotifyMask,
+		close_handler, fractal);
 }
 
 void	fractal_init(t_fractal *fractal)
@@ -48,5 +60,6 @@ void	fractal_init(t_fractal *fractal)
 	}
 	fractal->img.pixels_ptr = mlx_get_data_addr(fractal->img.img_ptr,
 			&fractal->img.bpp, &fractal->img.line_len, &fractal->img.endian);
+	events_init(fractal);
 	data_init(fractal);
 }

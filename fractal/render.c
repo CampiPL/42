@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 13:10:14 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/04/24 14:55:58 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/04/24 17:07:07 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ static void	handle_pixel(int x, int y, t_fractal *fractal)
 	i = 0;
 	z.r = 0;
 	z.i = 0;
-	c.r = map(x, -2, 2, WIDTH);
-	c.i = map(y, -2, 2, HEIGHT);
+	c.r = map(x, -2, 2, WIDTH) * fractal->zoom + fractal->shift_x;
+	c.i = map(y, -2, 2, HEIGHT) * fractal->zoom + fractal->shift_y;
 	while (i < fractal->iterations)
 	{
 		z = sum_complex(square_complex(z), c);

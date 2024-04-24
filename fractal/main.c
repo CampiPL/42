@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 10:43:52 by kuba              #+#    #+#             */
-/*   Updated: 2024/04/24 14:26:11 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/04/24 16:29:16 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		ft_putendl_fd("Wrong args!", 2);
+		ft_putendl_fd("Wrong args! Please pass either:", 2);
+		ft_putendl_fd("\t./fractol mandelbrot\n\t./fractol julia <re> <im>", 2);
 		exit(1);
 	}
 	return (0);

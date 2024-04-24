@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 10:23:48 by kuba              #+#    #+#             */
-/*   Updated: 2024/04/24 14:58:51 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/04/24 17:05:58 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "libft/libft.h"
 # include "minilibx-linux/mlx.h"
+# include <X11/X.h>
+# include <X11/keysym.h>
 
 # define WIDTH	800
 # define HEIGHT	800
@@ -45,9 +47,15 @@ typedef struct s_fractal
 	t_img	img;
 	double	escape_value;
 	int		iterations;
+	double	shift_x;
+	double	shift_y;
+	double	zoom;
 }	t_fractal;
 
 void		fractal_init(t_fractal *fractal);
+int			key_handler(int keysym, t_fractal *fractal);
+int			mouse_handler(int button, int x, int y, t_fractal *fractal);
+int			close_handler(t_fractal *fractal);
 void		fractal_render(t_fractal *fractal);
 double		map(double unscaled_num, double new_min,
 				double new_max, double old_max);

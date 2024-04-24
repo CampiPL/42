@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kuba <kuba@student.42.fr>                  +#+  +:+       +#+         #
+#    By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/09 09:35:31 by jdepka            #+#    #+#              #
-#    Updated: 2024/04/23 10:42:50 by kuba             ###   ########.fr        #
+#    Updated: 2024/04/24 15:32:00 by ubuntu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,8 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(MAKE) -C ./libft
-	$(MAKE) -C ./minilibx-linux
 	cp libft/libft.a $(NAME)
-	cp minilibx-linux/libmlx.a $(NAME)
-	${CC} ${CFLAGS} ${OBJS} libft/libft.a minilibx-linux/libmlx.a -o ${NAME}
+	${CC} ${CFLAGS} ${OBJS} libft/libft.a -Lminilibx-linux -lmlx_Linux -lX11 -lXext -o ${NAME}
 	
 clean:
 	$(MAKE) clean -C ./libft
