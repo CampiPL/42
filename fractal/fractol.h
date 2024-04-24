@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 10:23:48 by kuba              #+#    #+#             */
-/*   Updated: 2024/04/24 17:05:58 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/04/24 19:32:41 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ typedef struct s_fractal
 	double	shift_x;
 	double	shift_y;
 	double	zoom;
+	double	julia_x;
+	double	julia_y;
 }	t_fractal;
 
 void		fractal_init(t_fractal *fractal);
@@ -61,5 +63,6 @@ double		map(double unscaled_num, double new_min,
 				double new_max, double old_max);
 t_complex	sum_complex(t_complex z1, t_complex z2);
 t_complex	square_complex(t_complex z);
+double		atodbl(char *s);
 
 #endif

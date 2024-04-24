@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:29:47 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/04/24 17:45:07 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/04/24 20:03:38 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	key_handler(int keysym, t_fractal *fractal)
 	else if (keysym == XK_Down)
 		fractal->shift_y -= (0.5 * fractal->zoom);
 	else if (keysym == XK_Right)
-		fractal->shift_x -= (0.5 * fractal->zoom);
-	else if (keysym == XK_Left)
 		fractal->shift_x += (0.5 * fractal->zoom);
+	else if (keysym == XK_Left)
+		fractal->shift_x -= (0.5 * fractal->zoom);
 	else if (keysym == XK_i)
 		fractal->iterations += 10;
 	else if (keysym == XK_o)
