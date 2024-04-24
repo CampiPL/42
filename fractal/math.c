@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 13:21:49 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/04/24 13:32:06 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/04/24 14:53:48 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_complex	square_complex(t_complex z)
 {
 	t_complex	result;
 
-	result.r = (z.r + z.r) - (z.i * z.i);
+	result.r = (z.r * z.r) - (z.i * z.i);
 	result.i = 2 * z.r * z.i;
 	return (result);
 }

@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 13:10:14 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/04/24 13:58:26 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/04/24 14:55:58 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,9 @@ static void	handle_pixel(int x, int y, t_fractal *fractal)
 			my_pixel_put(x, y, &fractal->img, color);
 			return ;
 		}
+		i++;
 	}
-	my_pixel_put(x, y, &fractal->img, PSYCHEDELIC1);
+	my_pixel_put(x, y, &fractal->img, BLACK);
 }
 
 void	fractal_render(t_fractal *fractal)

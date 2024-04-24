@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 10:23:48 by kuba              #+#    #+#             */
-/*   Updated: 2024/04/24 13:52:08 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/04/24 14:58:51 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,25 +21,6 @@
 
 # define BLACK   0x000000
 # define WHITE   0xFFFFFF
-# define RED     0xFF0000
-# define GREEN   0x00FF00
-# define BLUE    0x0000FF
-# define YELLOW  0xFFFF00
-# define CYAN    0x00FFFF
-# define MAGENTA 0xFF00FF
-# define ORANGE  0xFFA500
-# define PURPLE  0x800080
-# define PINK    0xFFC0CB
-# define GRAY    0x808080
-
-# define PSYCHEDELIC1  0xFF00FF
-# define PSYCHEDELIC2  0xFFFF00
-# define PSYCHEDELIC3  0x00FFFF
-# define PSYCHEDELIC4  0xFFA500
-# define PSYCHEDELIC5  0x800080
-# define PSYCHEDELIC6  0xFFC0CB
-# define PSYCHEDELIC7  0xFF1493
-# define PSYCHEDELIC8  0x00FF
 
 typedef struct s_complex
 {
