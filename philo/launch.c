@@ -6,20 +6,19 @@
 /*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 13:45:01 by jdepka            #+#    #+#             */
-/*   Updated: 2024/05/22 16:47:58 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/05/23 16:03:14 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	thinking(t_philo *philo, int pre_simulation)
+void	thinking(t_philo *philo)
 {
 	long	t_eat;
 	long	t_sleep;
 	long	t_think;
 
-	if (!pre_simulation)
-		write_status('t', philo);
+	write_status('t', philo);
 	if (philo->table->philo_nbr % 2 == 0)
 		return ;
 	t_eat = philo->table->time_to_eat;
@@ -51,10 +50,10 @@ static void	eat(t_philo *philo)
 	write_status('f', philo);
 	pthread_mutex_lock(&philo->second_fork->fork);
 	write_status('f', philo);
-	set_long(&philo->philo_mutex, &philo->last_meal, gettime());
-	philo->meals_counter++;
 	write_status('e', philo);
 	precise_usleep(philo->table->time_to_eat, philo->table);
+	set_long(&philo->philo_mutex, &philo->last_meal, gettime());
+	philo->meals_counter++;
 	if (philo->table->nbr_limit_meals > 0
 		&& philo->meals_counter == philo->table->nbr_limit_meals)
 		set_int(&philo->philo_mutex, &philo->full, 1);
@@ -79,7 +78,7 @@ static void	*lunch_simulation(void *data)
 		eat(philo);
 		write_status('s', philo);
 		precise_usleep(philo->table->time_to_sleep, philo->table);
-		thinking(philo, 0);
+		thinking(philo);
 	}
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 10:45:57 by jdepka            #+#    #+#             */
-/*   Updated: 2024/05/22 16:47:37 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/05/23 15:18:26 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,6 @@ struct	s_table
 	t_philo			*philos;
 };
 
-typedef enum e_time_code
-{
-	SECONDS,
-	MILLISECOND,
-	MICROSECOND,
-}		t_time_code;
-
 void	error_exit(char *msg);
 void	parse_args(t_table *table, char *argv[]);
 void	data_init(t_table *table);
@@ -85,6 +78,6 @@ int		all_threads_running(pthread_mutex_t *mutex,
 void	increase_long(pthread_mutex_t *mutex, long *value);
 void	clean(t_table *table);
 void	desynchronize_philos(t_philo *philo);
-void	thinking(t_philo *philo, int pre_simulation);
+void	thinking(t_philo *philo);
 
 #endif

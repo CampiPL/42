@@ -6,7 +6,7 @@
 /*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:47:01 by jdepka            #+#    #+#             */
-/*   Updated: 2024/05/22 16:26:38 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/05/23 15:41:01 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ void	desynchronize_philos(t_philo *philo)
 	if (philo->table->philo_nbr % 2 == 0)
 	{
 		if (philo->id % 2 == 0)
-			precise_usleep(30, philo->table);
+			thinking(philo);
 	}
 	else
 	{
 		if (philo->id % 2)
-			thinking(philo, 1);
+			thinking(philo);
 	}
 }
