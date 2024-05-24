@@ -1,0 +1,2 @@
+valgrind --suppressions=readline_leaks_1.txt ./a.out 
+ccw *.c -lreadline libft/libft.a
