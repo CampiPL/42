@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env.c                                           :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: macrespo <macrespo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/08 13:29:44 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/05/29 10:38:59 by jdepka           ###   ########.fr       */
+/*   Created: 2020/06/08 14:55:46 by macrespo          #+#    #+#             */
+/*   Updated: 2020/08/11 18:19:29 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "minishell.h"
 
-#include "../minishell.h"
-
-void	ft_env(char **lst)
+int		ft_pwd(void)
 {
-	if (!lst)
-		return (ft_putstr_fd("Environment not found\n", 1));
-	while (lst && *lst++)
-		printf("%s\n", *lst);
-	g_core = 0;
+	char	cwd[PATH_MAX];
+
+	if (getcwd(cwd, PATH_MAX))
+	{
+		ft_putendl_fd(cwd, 1);
+		return (SUCCESS);
+	}
+	else
+		return (ERROR);
 }

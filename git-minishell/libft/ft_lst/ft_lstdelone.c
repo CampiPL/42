@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env.c                                           :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: macrespo <macrespo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/08 13:29:44 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/05/29 10:38:59 by jdepka           ###   ########.fr       */
+/*   Created: 2019/10/11 15:49:10 by cclaude           #+#    #+#             */
+/*   Updated: 2020/08/05 16:27:56 by macrespo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-#include "../minishell.h"
-
-void	ft_env(char **lst)
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	if (!lst)
-		return (ft_putstr_fd("Environment not found\n", 1));
-	while (lst && *lst++)
-		printf("%s\n", *lst);
-	g_core = 0;
+	if (lst == NULL || del == NULL)
+		return ;
+	del(lst->content);
+	ft_memdel(lst);
 }

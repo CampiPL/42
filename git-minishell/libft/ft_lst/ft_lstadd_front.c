@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env.c                                           :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/08 13:29:44 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/05/29 10:38:59 by jdepka           ###   ########.fr       */
+/*   Created: 2019/10/11 15:48:56 by cclaude           #+#    #+#             */
+/*   Updated: 2019/10/16 16:23:39 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-#include "../minishell.h"
-
-void	ft_env(char **lst)
+void	ft_lstadd_front(t_list **alst, t_list *new)
 {
-	if (!lst)
-		return (ft_putstr_fd("Environment not found\n", 1));
-	while (lst && *lst++)
-		printf("%s\n", *lst);
-	g_core = 0;
+	if (!alst || !new)
+		return ;
+	new->next = *alst;
+	*alst = new;
 }

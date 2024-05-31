@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env.c                                           :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: macrespo <macrespo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/08 13:29:44 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/05/29 10:38:59 by jdepka           ###   ########.fr       */
+/*   Created: 2020/06/09 15:24:05 by macrespo          #+#    #+#             */
+/*   Updated: 2020/08/27 17:59:51 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "minishell.h"
 
-#include "../minishell.h"
-
-void	ft_env(char **lst)
+int		ft_env(t_env *env)
 {
-	if (!lst)
-		return (ft_putstr_fd("Environment not found\n", 1));
-	while (lst && *lst++)
-		printf("%s\n", *lst);
-	g_core = 0;
+	while (env && env->next != NULL)
+	{
+		ft_putendl(env->value);
+		env = env->next;
+	}
+	if (env)
+		ft_putendl(env->value);
+	return (SUCCESS);
 }

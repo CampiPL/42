@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env.c                                           :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/08 13:29:44 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/05/29 10:38:59 by jdepka           ###   ########.fr       */
+/*   Created: 2020/02/05 18:22:24 by cclaude           #+#    #+#             */
+/*   Updated: 2020/02/06 15:38:11 by cclaude          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-#include "../minishell.h"
-
-void	ft_env(char **lst)
+int	ft_isspace(int c)
 {
-	if (!lst)
-		return (ft_putstr_fd("Environment not found\n", 1));
-	while (lst && *lst++)
-		printf("%s\n", *lst);
-	g_core = 0;
+	if (c == ' ' || c == '\t' || c == '\r')
+		return (1);
+	else if (c == '\v' || c == '\f')
+		return (1);
+	else
+		return (0);
 }
