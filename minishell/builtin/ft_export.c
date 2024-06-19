@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmakhlou <rmakhlou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 13:29:58 by rmakhlou          #+#    #+#             */
-/*   Updated: 2023/02/14 09:18:02 by rmakhlou         ###   ########.fr       */
+/*   Updated: 2024/06/19 11:45:07 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../minishell.h"
 
@@ -17,7 +16,7 @@ char	**ft_export(char **lst, char *s)
 {
 	char	**rt;
 	size_t	i;
-	
+
 	if (!lst)
 	{
 		rt = ft_malloc(2, sizeof(char *));

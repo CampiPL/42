@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsimp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 10:51:39 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/06/11 15:25:42 by rmakhlou         ###   ########.fr       */
+/*   Updated: 2024/06/19 11:43:27 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,12 @@ void	ft_copycote(char **s, char *rt, int &i)
 	
 }
 */
+
 char	*ft_strsimp(char *s)
 {
 	size_t		i;
-	char	*rt;
-	char	c;
+	char		*rt;
+	char		c;
 
 	if (!s)
 		return (NULL);

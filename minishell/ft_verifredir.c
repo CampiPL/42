@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_verifredir.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmakhlou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 13:12:42 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/06/14 16:34:23 by rmakhlou         ###   ########.fr       */
+/*   Updated: 2024/06/19 11:35:58 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	ft_boolredir(char *s)
 	if (*s && *s == '>' && s[1] == '\n')
 		b = 1;
 	if (b == 1)
-		return (ft_printf(2, "parse error near `%c'\n", s[1]),  b);
+		return (ft_printf(2, "parse error near `%c'\n", s[1]), b);
 	return (b);
 }
 

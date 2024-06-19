@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redir.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmakhlou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 13:12:42 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/06/08 15:42:36 by rmakhlou         ###   ########.fr       */
+/*   Updated: 2024/06/19 11:37:24 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ void	ft_heredoc(t_b *tb, char *s, int i)
 	hdc = ft_strjoin("/tmp/miniheredoc", ft_itoa(i), 3);
 	tb->cmd[i].nin = hdc;
 	tb->cmd[i].in = open(hdc, O_RDWR | O_CREAT | O_TRUNC, 0644);
-	while(1)
+	while (1)
 	{
 		rd = readline("heredoc> ");
 		if (!ft_strncmp(rd, s, ft_strlen(s, 0)))
-			break;
+			break ;
 		ft_printf(tb->cmd[i].in, "%s\n", rd);
 		free(rd);
 	}
@@ -34,7 +34,7 @@ void	ft_heredoc(t_b *tb, char *s, int i)
 void	ft_redirin(t_b *tb, char *s, int i)
 {
 	tb->cmd[i].in = open(av[1], O_RDONLY);
-	if (tb->cmd[i].in = -1)
+	if (tb->cmd[i].in = -1) // == ?
 		ft_printf(2, "no such file or directory: %s\n", s);
 }
 

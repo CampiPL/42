@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_verifpip.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmakhlou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 12:58:39 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/06/14 16:14:23 by rmakhlou         ###   ########.fr       */
+/*   Updated: 2024/06/19 11:38:17 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int	ft_verifpip(char *s)
 			s += (ft_strlen(s + 1, *s) + 1);
 		if (*s++ == '|')
 			if (ft_strlen(s, 0) == ft_skipchar(s, 32))
-				return (ft_printf(2, "syntax error near unexpected token `|'\n"));
+				return (ft_printf(2,
+						"syntax error near unexpected token `|'\n"));
 	}
 	return (0);
 }
