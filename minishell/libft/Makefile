@@ -6,7 +6,7 @@
 #    By: rmakhlou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 02:28:07 by rmakhlou          #+#    #+#              #
-#    Updated: 2022/12/12 04:08:35 by rmakhlou         ###   ########.fr        #
+#    Updated: 2024/06/11 18:53:14 by rmakhlou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRC		=	ft_atoi.c 	\
 			ft_isascii.c 	\
 			ft_isdigit.c 	\
 			ft_isprint.c 	\
+			ft_isspace.c 	\
 			ft_itoa.c 	\
 			ft_lstlen.c 	\
 			ft_ltoa.c 	\
@@ -42,10 +43,11 @@ SRC		=	ft_atoi.c 	\
 			ft_strdup.c 	\
 			ft_striteri.c 	\
 			ft_strjoin.c 	\
-			ft_memjoin.c 	\
 			ft_strlcat.c 	\
 			ft_strlcpy.c 	\
 			ft_strlen.c 	\
+			ft_skipchar.c 	\
+			ft_strlenstr.c 	\
 			ft_strmapi.c 	\
 			ft_strncmp.c 	\
 			ft_strnstr.c 	\

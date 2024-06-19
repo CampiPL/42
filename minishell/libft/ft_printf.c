@@ -6,11 +6,33 @@
 /*   By: rmakhlou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 13:21:20 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/05/07 16:20:27 by rmakhlou         ###   ########.fr       */
+/*   Updated: 2024/06/11 18:52:26 by rmakhlou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static void	*ft_memjoin(void *s1, void *s2, int a, int *b)
+{
+	int		i;
+	char	*t;
+	char	*t1;
+	char	*t2;
+
+	i = -1;
+	t1 = (char *)s1;
+	t2 = (char *)s2;
+	t = malloc((*b) * sizeof(char));
+	if (!t)
+		return (NULL);
+	while (++i < a)
+		t[i] = t1[i];
+	i--;
+	while (++i < *b)
+		t[i] = t2[i - a];
+	ft_freebulk("ss", s1, s2);
+	return ((void *)t);
+}
 
 static char	*ft_cstr(char c, int *i)
 {
@@ -74,7 +96,7 @@ int	ft_printf(int fd, const char *s, ...)
 	{
 		tmpi = i;
 		if (s[1] && *s == '%')
-			rs = ft_memjoin(rs, vtype(++s, ap, &i), i, &i);
+			rs = ft_memjoin(rs, vtype(++s, ap, &i), tmpi, &i);
 		else if (*s != '%')
 		{
 			i += ft_strlen(s, '%');

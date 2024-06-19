@@ -6,7 +6,7 @@
 /*   By: rmakhlou <rmakhlou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 02:27:56 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/05/07 16:14:57 by rmakhlou         ###   ########.fr       */
+/*   Updated: 2024/06/11 18:53:04 by rmakhlou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ void	ft_freelst(char **lst);
 void	ft_freebulk(const char *s, ...);
 size_t	ft_cnt_wrd(const char *s, char c);
 int		ft_lstlen(char **lst);
-void	*ft_memjoin(void *s1, void *s2, int a, int *b);
+int		ft_isspace(int c);
+size_t	ft_strlenstr(const char *s, char *c);
+size_t	ft_skipchar(const char *s, char c);
 
 #endif

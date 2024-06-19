@@ -6,104 +6,76 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 10:51:39 by rmakhlou          #+#    #+#             */
-/*   Updated: 2023/02/14 09:03:38 by user             ###   ########.fr       */
+/*   Updated: 2024/06/11 15:25:42 by rmakhlou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "minishell.h"
-
-static void	ft_cntcote(char *s, int *i, int *rt, char c)
-{
-		if (s[*i] == c)
-		{
-			*i += 1;
-			*rt += 1;
-			while (s[*i] && s[*i] != c)
-			{
-				*i += 1;
-				*rt += 1;
-			}
-		}
-}
 
 static int	ft_count(char *s)
 {
-	int	i;
 	int	rt;
 
-	i = 0;
 	rt = 0;
-	while (s && s[i])
+	s += ft_skipchar(s, 32);
+	while (s && *s)
 	{
-		while (s[i] && s[i] < 33)
-			i++;
-		ft_cntcote(s, &i, &rt, 34);
-		ft_cntcote(s, &i, &rt, 39);
-		if (s[i] && s[i] > 32)
+		if (*s && ft_isspace(*s))
 		{
-			i++;
+			rt++;
+			s += ft_skipchar(s, 32);
+		}
+		else if (*s && (*s == 34 || *s == 39))
+		{
+			rt += (ft_strlen(s + 1, *s) + 1);
+			s += (ft_strlen(s + 1, *s) + 1);
+		}
+		else
+		{
+			s++;
 			rt++;
 		}
-		if (s[i] && s[i] < 33 && s[i - 1] > 32)
-			rt++;
 	}
 	return (rt);
 }
-
-static void	ft_cotecpy(char *s, char *rt, int *i, int *j)
+/*
+void	ft_copycote(char **s, char *rt, int &i)
 {
-		if (s[*i] == 34)
-		{
-			rt[*j] = s[*i];
-			*i += 1;
-			*j += 1;
-			while (s[*i] && s[*i] != 34)
-			{
-				rt[*j] = s[*i];
-				*i += 1;
-				*j += 1;
-			}
-		}
-		if (s[*i] == 39)
-		{
-			rt[*j] = s[*i];
-			*i += 1;
-			*j += 1;
-			while (s[*i] && s[*i] != 39)
-			{
-				rt[*j] = s[*i];
-				*i += 1;
-				*j += 1;
-			}
-		}
+	
 }
-
+*/
 char	*ft_strsimp(char *s)
 {
-	int	i;
-	int	j;
+	size_t		i;
 	char	*rt;
+	char	c;
 
 	if (!s)
 		return (NULL);
 	i = 0;
-	j = 0;
 	rt = ft_calloc(ft_count(s) + 1, sizeof(char));
 	if (!rt)
 		return (printf("Not enough memory, malloc failed"), "");
-	while (s[i])
+	s += ft_skipchar(s, 32);
+	while (s && *s)
 	{
-		while (s[i] && s[i] < 33)
-			i++;
-		ft_cotecpy(s, rt, &i, &j);
-		if (s[i] && s[i] > 32)
-			rt[j++] = s[i++];
-		if (s[i] && s[i] < 33 && s[i - 1] > 32)
-			rt[j++] = 32;
+		if (*s && ft_isspace(*s))
+		{
+			rt[i++] = *s++;
+			s += ft_skipchar(s, 32);
+		}
+		else if (*s && (*s == 34 || *s == 39))
+		{
+			c = *s;
+			rt[i++] = *s++;
+			while (*s && *s != c)
+				rt[i++] = *s++;
+			rt[i++] = *s++;
+		}
+		else
+			rt[i++] = *s++;
 	}
-	if (ft_strlen(rt, 0) > 1 && rt[j - 1] == 32)
-		rt[j - 1] = 0;
-	free(s);
-	return(rt);
+	if (ft_strlen(rt, 0) > 1 && rt[i - 1] == 32)
+		rt[i - 1] = 0;
+	return (rt);
 }

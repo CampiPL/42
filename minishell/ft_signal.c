@@ -6,11 +6,11 @@
 /*   By: rmakhlou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 13:34:17 by rmakhlou          #+#    #+#             */
-/*   Updated: 2023/01/06 13:34:18 by rmakhlou         ###   ########.fr       */
+/*   Updated: 2024/06/08 13:06:14 by rmakhlou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
+#include "minishell.h"
 
 void	ctrl_c(int sig)
 {
@@ -22,9 +22,10 @@ void	ctrl_c(int sig)
 		rl_redisplay();
 	}
 }
+
 void	ft_signal(void)
 {
-	struct sigaction sa[2];
+	struct sigaction	sa[2];
 
 	ft_memset(sa, 0, sizeof(sa));
 	sa[0].sa_handler = ctrl_c;

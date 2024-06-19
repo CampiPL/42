@@ -1,35 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memjoin.c                                       :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmakhlou <rmakhlou@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/07 18:55:05 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/05/07 16:18:09 by rmakhlou         ###   ########.fr       */
+/*   Created: 2024/02/07 18:54:05 by rmakhlou          #+#    #+#             */
+/*   Updated: 2024/06/08 10:48:24 by rmakhlou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memjoin(void *s1, void *s2, int a, int *b)
+int	ft_isspace(int c)
 {
-	int		i;
-	char	*t;
-	char	*t1;
-	char	*t2;
-
-	i = -1;
-	t1 = (char *)s1;
-	t2 = (char *)s2;
-	t = malloc((*b) * sizeof(char));
-	if (!t)
-		return (NULL);
-	while (++i < a)
-		t[i] = t1[i];
-	i--;
-	while (++i < *b)
-		t[i] = t2[i - a];
-	ft_freebulk("ss", s1, s2);
-	return ((void *)t);
+	if (c == 32 || (c > 8 && c < 14))
+		return (1);
+	return (0);
 }
