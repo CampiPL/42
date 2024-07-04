@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   ft_clean.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmakhlou <rmakhlou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/08 13:30:07 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/07/04 14:38:16 by rmakhlou         ###   ########.fr       */
+/*   Created: 2022/03/09 08:08:56 by rmakhlou          #+#    #+#             */
+/*   Updated: 2024/07/02 14:25:01 by rmakhlou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "minishell.h"
 
-#include "../minishell.h"
-
-void	ft_pwd()
+void	ft_clean(t_b *tb)//, char **env)
 {
-	char	*var;
-
-	var = ft_calloc(1024, sizeof(char));
-	if (!var)
-		return ;
-	var = getcwd(var, 1024);
-	ft_printf("%s\n", var);
-	free(var);
+	int	i;
+	
+	i = -1;
+	while (++i < tb->max)
+	{
+		free(tb->cmd[i].path);
+		ft_freelst(tb->cmd[i].cmd);
+		free(tb->cmd[i].builtin);
+		free(tb->cmd[i].heredoc);
+		free(tb->cmd[i].nin);
+		free(tb->cmd[i].nout);
+	}
+	free(tb->cmd);
 }

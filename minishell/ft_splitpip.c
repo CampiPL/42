@@ -1,30 +1,65 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_verifpip.c                                      :+:      :+:    :+:   */
+/*   ft_splitpip.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmakhlou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 12:58:39 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/06/14 16:14:23 by rmakhlou         ###   ########.fr       */
+/*   Updated: 2024/07/02 13:25:15 by rmakhlou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_verifpip(char *s)
+static int	ft_cnt(char *s, char c)
 {
-	if (!ft_strchr(s, '|'))
-		return (0);
-	if (ft_strlen(s, '|') == ft_skipchar(s, 32))
-		return (1);
+	int	i;
+
+	i = 0;
 	while (s && *s)
 	{
 		if (*s == 34 || *s == 39)
 			s += (ft_strlen(s + 1, *s) + 1);
-		if (*s++ == '|')
-			if (ft_strlen(s, 0) == ft_skipchar(s, 32))
-				return (1);
+		if (*s++ == c)
+			i++;
 	}
-	return (0);
+	return (i);
+}
+
+static	size_t	ft_strlensc(char *s, char c)
+{
+	size_t	i;
+
+	i = 0;
+	while (s && s[i] && s[i] != c)
+	{
+		if (s[i] == 34 || s[i] == 39)
+			i += (ft_strlen(s + i + 1, s[i]) + 1);
+		i++;
+	}
+	return (i);
+}
+
+char	**ft_splitpip(char *s, char c)
+{
+	char	**tmp;
+	int	i;
+
+	i = 0;
+//	if (!ft_cnt(s, c))
+//		return (NULL);
+	tmp = ft_calloc(ft_cnt(s, c) + 2, sizeof(char *));
+	if (!tmp)
+		return (NULL);
+	while (s && *s)
+	{
+		tmp[i] = ft_substr(s, 0, ft_strlensc(s, c));
+		tmp[i] = ft_strsimp(tmp[i]);
+		s += ft_strlensc(s, c);
+		if (*s == c)
+			s++;
+		i++;
+	}
+	return (tmp);
 }

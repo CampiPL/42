@@ -3,38 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   ft_verifredir.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rmakhlou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 13:12:42 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/06/19 11:35:58 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/06/27 15:09:45 by rmakhlou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+static int	ft_skipredir(char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i] == '>' || s[i] == '<')
+		i++;
+	return (i);
+}
+
 static int	ft_boolredir(char *s)
 {
-	int	b;
+	int	i;
+	char	*err;
 
-	b = 0;
-	if (*s && *s == '>' && s[1] == '<')
-		b = 1;
-	if (*s && *s == '>' && s[1] == '|')
-		b = 1;
-	if (*s && *s == '>' && s[1] == ';')
-		b = 1;
-	if (*s && *s == '>' && s[1] == 0)
-		b = 1;
-	if (*s && *s == '>' && s[1] == '\n')
-		b = 1;
-	if (b == 1)
-		return (ft_printf(2, "parse error near `%c'\n", s[1]), b);
-	return (b);
+	i = 0;
+	err = ft_strdup("syntax error near unexpected token");
+	if (*s && ft_skipredir(s) > 2)
+		i = ft_printf(2, "%s `%c%c'\n", err, *s, s[1]);
+	else if (*s && *s == '>' && s[1] == '<')
+		i = ft_printf(2, "%s `%c'\n", err, s[1]);
+	else if (*s && *s == '>' && ft_strlen(s + 1, 0) == ft_skipchar(s + 1, 32))
+		i = ft_printf(2, "%s `%s'\n", err, "\\n");
+	else if (*s && *s == '>' && ft_strlen(s + 1, '|') == ft_skipchar(s + 1, 32))
+		i = ft_printf(2, "%s `%c'\n", err, '|');
+	else if (*s && *s == '>' && s[1] == '\n')
+		i = ft_printf(2, "%s `%c'\n", err, s[1]);
+	return (free(err), i);
 }
 
 int	ft_verifredir(char *s)
 {
-	printf("t");
 	if (!ft_strchr(s, '<') && !ft_strchr(s, '>'))
 		return (0);
 	while (s && *s)

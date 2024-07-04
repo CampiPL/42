@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rmakhlou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 13:29:36 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/06/19 11:46:47 by jdepka           ###   ########.fr       */
+/*   Updated: 2023/01/12 09:45:49 by rmakhlou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../minishell.h"
 
@@ -18,5 +19,5 @@ int	ft_echo(char *s, int fd, int a)
 		return (0);
 	ft_putstr_fd(s, fd);
 	if (a == 1)
-		ft_putstr_fd("\n", fd);
+	       ft_putstr_fd("\n", fd);	
 }

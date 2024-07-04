@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rmakhlou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 13:30:20 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/06/19 11:45:27 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/07/04 14:39:13 by rmakhlou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../minishell.h"
 
@@ -26,7 +27,7 @@ char	**ft_unset(char **lst, char *s)
 	i = -1;
 	while (lst && lst[++i])
 	{
-		if (ft_strncmp(lst[i], s, ft_strlen(s, 0)))
+		if (s && ft_strncmp(lst[i], s, ft_strlen(s, 0)))
 			i++;
 		else
 			rt[i] = ft_strdup(lst[i]);

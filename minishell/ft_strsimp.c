@@ -3,80 +3,52 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsimp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 10:51:39 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/06/19 11:43:27 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/06/16 18:39:04 by rmakhlou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	ft_count(char *s)
+static void	ft_cpycote(char *rt, char *s, size_t *i, size_t *j)
 {
-	int	rt;
+	size_t	a;
+	size_t	b;
 
-	rt = 0;
-	s += ft_skipchar(s, 32);
-	while (s && *s)
-	{
-		if (*s && ft_isspace(*s))
-		{
-			rt++;
-			s += ft_skipchar(s, 32);
-		}
-		else if (*s && (*s == 34 || *s == 39))
-		{
-			rt += (ft_strlen(s + 1, *s) + 1);
-			s += (ft_strlen(s + 1, *s) + 1);
-		}
-		else
-		{
-			s++;
-			rt++;
-		}
-	}
-	return (rt);
+	a = *i;
+	b = *j;
+	rt[a++] = s[b++];
+	while (s[b] && s[b] != s[*j])
+		rt[a++] = s[b++];
+	rt[a++] = s[b++];
+	*i = a;
+	*j = b;
 }
-/*
-void	ft_copycote(char **s, char *rt, int &i)
-{
-	
-}
-*/
 
 char	*ft_strsimp(char *s)
 {
 	size_t		i;
-	char		*rt;
-	char		c;
+	size_t		j;
+	char	*rt;
 
-	if (!s)
-		return (NULL);
 	i = 0;
-	rt = ft_calloc(ft_count(s) + 1, sizeof(char));
+	rt = ft_calloc(ft_strlen(s, 0) + 1, sizeof(char));
 	if (!rt)
-		return (printf("Not enough memory, malloc failed"), "");
-	s += ft_skipchar(s, 32);
-	while (s && *s)
+		return (printf("Not enough memory, malloc failed"), NULL);
+	j = ft_skipchar(s, 32);
+	while (s[j])
 	{
-		if (*s && ft_isspace(*s))
+		if (ft_isspace(s[j]))
 		{
-			rt[i++] = *s++;
-			s += ft_skipchar(s, 32);
+			rt[i++] = s[j++];
+			j += ft_skipchar(s + j, 32);
 		}
-		else if (*s && (*s == 34 || *s == 39))
-		{
-			c = *s;
-			rt[i++] = *s++;
-			while (*s && *s != c)
-				rt[i++] = *s++;
-			rt[i++] = *s++;
-		}
+		else if (s[j] == 34 || s[j] == 39)
+			ft_cpycote(rt, s, &i, &j);
 		else
-			rt[i++] = *s++;
+		rt[i++] = s[j++];
 	}
-	if (ft_strlen(rt, 0) > 1 && rt[i - 1] == 32)
-		rt[i - 1] = 0;
-	return (rt);
+	return (free(s), rt);
 }

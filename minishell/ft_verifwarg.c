@@ -22,7 +22,7 @@ int	ft_verifwarg(char *s)
 	while (s[++i])
 	{
 		if (ft_strchr("\\;", s[i]))
-			return (ft_printf(2, "Invalid Input : %c\n", s[i]));
+			return (ft_printf(2, "invalid token `%c'\n", s[i]));
 		if (ft_strchr("\"'", s[i]))
 			i += ft_strlen(s + i + 1, s[i]) + 1;
 	}

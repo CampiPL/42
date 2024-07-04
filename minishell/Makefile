@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rmakhlou <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 10:29:43 by rmakhlou          #+#    #+#              #
-#    Updated: 2024/06/14 16:22:24 by rmakhlou         ###   ########.fr        #
+#    Updated: 2024/07/04 17:43:44 by jdepka           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,12 @@ SRC	=	minishell.c	\
 		ft_verifwarg.c	\
 		ft_verifpip.c	\
 		ft_verifredir.c	\
+		ft_penv.c	\
+		ft_splitpip.c	\
+		ft_convarg.c	\
+		ft_clean.c	\
+		ft_prep.c	\
+		mini.c
 #		ft_redir.c	#
 
 OBJ = ${SRC:.c=.o}
