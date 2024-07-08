@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/21 11:51:22 by cclaude           #+#    #+#             */
-/*   Updated: 2024/05/31 13:09:03 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/07/08 18:30:48 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ void	redir_and_exec(t_mini *mini, t_token *token)
 
 	prev = prev_sep(token, NOSKIP);
 	next = next_sep(token, NOSKIP);
-	printf("o\n");
+	/*
 	if (prev)
 		printf("prev: %s\n", prev->str);
-	printf("k\n");
 	if (next)
 		printf("next: %s\n", next->str);
+	*/
 	pipe = 0;
 	if (is_type(prev, TRUNC))
 		redir(mini, token, TRUNC);
@@ -48,11 +48,19 @@ void	minishell(t_mini *mini)
 {
 	t_token	*token;
 	int		status;
+	t_token	*t;
 
 	token = next_run(mini->start, NOSKIP);
 	token = (is_types(mini->start, "TAI")) ? mini->start->next : token;
 	while (mini->exit == 0 && token)
 	{
+		printf("token - %s\n", token->str);
+		t = token;
+		while (t->next)
+		{
+			printf("next token - %s\n", t->next->str);
+			t = t->next;
+		}
 		mini->charge = 1;
 		mini->parent = 1;
 		mini->last = 1;

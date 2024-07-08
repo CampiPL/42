@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 19:41:37 by cclaude           #+#    #+#             */
-/*   Updated: 2024/05/30 15:14:53 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/07/08 19:48:31 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void	parse(t_mini *mini)
 	line = space_line(line);
 	if (line && line[0] == '$')
 		line[0] = (char)(-line[0]);
+	printf("line - %s\n", line);
 	mini->start = get_tokens(line);
 	ft_memdel(line);
 	squish_args(mini);
