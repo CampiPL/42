@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 10:51:39 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/07/04 17:47:52 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/07/08 19:41:13 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ int main(int ac, char **av, char **env)
 {
 	t_b tb;
 	char **tmp;
-	int	i;
-	int	j;
+	//int	i;
+	//int	j;
 
 	ft_signal();
 	ft_init(&tb, &env);
@@ -81,6 +81,7 @@ int main(int ac, char **av, char **env)
 			tb.rd = ft_convarg(tb.rd);
 			ft_prep(&tb);
 			tmp = ft_splitpip(tb.rd, '|');
+			/*
 			i = -1;
 			while (tmp && tmp[++i])
 			{
@@ -91,7 +92,8 @@ int main(int ac, char **av, char **env)
 					printf("%s\n",tb.cmd[i].cmd[j]);
 			}
 			printf("-%s\n", tb.rd);
-			minishell(&tb);
+			*/
+			mini(&tb);
 			ft_clean(&tb);
 			ft_freebulk("sl", tb.rd, tmp);
 			//free(tb.rd);

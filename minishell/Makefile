@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+         #
+#    By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 10:29:43 by rmakhlou          #+#    #+#              #
-#    Updated: 2024/07/04 17:43:44 by jdepka           ###   ########.fr        #
+#    Updated: 2024/07/08 20:11:00 by ubuntu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRC	=	minishell.c	\
 		ft_convarg.c	\
 		ft_clean.c	\
 		ft_prep.c	\
-		mini.c
+		mini.c	\
+		utils.c
 #		ft_redir.c	#
 
 OBJ = ${SRC:.c=.o}
