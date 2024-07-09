@@ -6,7 +6,7 @@
 #    By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 10:29:43 by rmakhlou          #+#    #+#              #
-#    Updated: 2024/07/08 20:11:00 by ubuntu           ###   ########.fr        #
+#    Updated: 2024/07/09 17:35:26 by ubuntu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,9 @@ SRC	=	minishell.c	\
 		ft_clean.c	\
 		ft_prep.c	\
 		mini.c	\
-		utils.c
+		utils.c	\
+		types.c	\
+		redirexec.c
 #		ft_redir.c	#
 
 OBJ = ${SRC:.c=.o}

@@ -6,26 +6,13 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:33:33 by jdepka            #+#    #+#             */
-/*   Updated: 2024/07/08 21:01:53 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/09 17:35:07 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	mini(t_b *mini)
-{
-	t_cmd	*start;
-
-	printf("%s\n", mini->rd);
-	start = get_start(mini->rd);
-	while (start)
-	{
-		printf("cmd: %s (%d)\n", start->str, start->type);
-		start = start->next;
-	}
-}
-
-t_cmd	*next_token(char *line, int *i)
+static t_cmd	*next_cmd(char *line, int *i)
 {
 	t_cmd	*cmd;
 	int		j;
@@ -33,8 +20,9 @@ t_cmd	*next_token(char *line, int *i)
 
 	j = 0;
 	quote = ' ';
-	if (!(cmd = malloc(sizeof(t_cmd)))
-	|| !(cmd->str = malloc(sizeof(char) * next_alloc(line, i))))
+	cmd = malloc(sizeof(t_cmd));
+	cmd->str = malloc(sizeof(char) * next_alloc(line, i));
+	if (!cmd || !cmd->str)
 		return (NULL);
 	while (line[*i] && (line[*i] != ' ' || quote != ' '))
 	{
@@ -49,7 +37,7 @@ t_cmd	*next_token(char *line, int *i)
 	return (cmd);
 }
 
-t_cmd	*get_start(char *rd)
+static t_cmd	*get_start(char *rd)
 {
 	t_cmd	*prev;
 	t_cmd	*next;
@@ -60,7 +48,7 @@ t_cmd	*get_start(char *rd)
 	i = 0;
 	while (rd[i])
 	{
-		next = next_token(rd, &i);
+		next = next_cmd(rd, &i);
 		next->prev = prev;
 		if (prev)
 			prev->next = next;
@@ -73,4 +61,27 @@ t_cmd	*get_start(char *rd)
 	while (next && next->prev)
 		next = next->prev;
 	return (next);
+}
+
+void	mini(t_b *mini)
+{
+	t_cmd	*start;
+	t_cmd	*cmd;
+
+	printf("%s\n", mini->rd);
+	start = get_start(mini->rd);
+	cmd = next_run(start);
+	/*
+	while (cmd)
+	{
+		printf("cmd: %s (%d)\n", cmd->str, cmd->type);
+		cmd = cmd->next;
+	}
+	*/
+	while (cmd)
+	{
+		printf("cmd: %s (%d)\n", cmd->str, cmd->type);
+		redir_and_exec(mini, cmd);
+		cmd = next_run(cmd->next);
+	}
 }
