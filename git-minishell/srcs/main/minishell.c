@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/21 11:51:22 by cclaude           #+#    #+#             */
-/*   Updated: 2024/07/08 18:30:48 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/09 17:27:32 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,19 @@ void	minishell(t_mini *mini)
 {
 	t_token	*token;
 	int		status;
-	t_token	*t;
+	//t_token	*t;
 
 	token = next_run(mini->start, NOSKIP);
 	token = (is_types(mini->start, "TAI")) ? mini->start->next : token;
 	while (mini->exit == 0 && token)
 	{
 		printf("token - %s\n", token->str);
-		t = token;
-		while (t->next)
-		{
-			printf("next token - %s\n", t->next->str);
-			t = t->next;
-		}
+		//t = token;
+		//while (t->next)
+		//{
+		//	printf("next token - %s\n", t->next->str);
+		//	t = t->next;
+		//}
 		mini->charge = 1;
 		mini->parent = 1;
 		mini->last = 1;
