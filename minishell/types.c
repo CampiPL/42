@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 16:51:42 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/09 17:22:56 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/10 13:41:09 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ void	type_arg(t_cmd *cmd)
 		cmd->type = INPUT;
 	else if (ft_strcmp(cmd->str, "|") == 0)
 		cmd->type = PIPE;
-	else if (ft_strcmp(cmd->str, ";") == 0)
-		cmd->type = END;
 	else if (cmd->prev == NULL || cmd->prev->type >= TRUNC)
 		cmd->type = CMD;
 	else
@@ -51,8 +49,6 @@ int	is_types(t_cmd *cmd, char *types)
 	else if (ft_strchr(types, 'I') && is_type(cmd, INPUT))
 		return (1);
 	else if (ft_strchr(types, 'P') && is_type(cmd, PIPE))
-		return (1);
-	else if (ft_strchr(types, 'E') && is_type(cmd, END))
 		return (1);
 	return (0);
 }

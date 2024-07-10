@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 10:51:39 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/07/08 19:41:13 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/10 14:05:02 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static char	**ft_cenv()
+static char	**ft_cenv(void)
 {
-	char **tmp;
+	char	**tmp;
 
 	tmp = ft_calloc(5, sizeof(char *));
 	tmp[0] = ft_strjoin("PWD=", getcwd(tmp[0], 1024), 3);
@@ -30,7 +30,7 @@ static int	ft_check(char *s, int fd)
 		return (1);
 	add_history(s);
 	ft_printf(fd, "%s\n", s);
-	if (ft_verifwarg(s)) 
+	if (ft_verifwarg(s))
 		return (1);
 	if (ft_verifcote(s))
 		return (1);
@@ -54,16 +54,16 @@ static void	ft_init(t_b *tb, char ***env)
 	ft_printf(tb->err, "0\n");
 }
 
-int main(int ac, char **av, char **env)
+int	main(int ac, char **av, char **env)
 {
-	t_b tb;
-	char **tmp;
-	//int	i;
-	//int	j;
+	t_b		tb;
+	char	**tmp;
+	//int		i;
+	//int		j;
 
 	ft_signal();
 	ft_init(&tb, &env);
-	while(ac && av)
+	while (ac && av)
 	{
 		tb.rd = readline("Minishell> ");
 		if (!tb.rd || !ft_strncmp("exit", tb.rd + ft_skipchar(tb.rd, 32), 5))
@@ -89,7 +89,7 @@ int main(int ac, char **av, char **env)
 				j = -1;
 				printf("+++\n");
 				while (++j < ft_lstlen(tb.cmd[i].cmd))
-					printf("%s\n",tb.cmd[i].cmd[j]);
+					printf("%s\n", tb.cmd[i].cmd[j]);
 			}
 			printf("-%s\n", tb.rd);
 			*/

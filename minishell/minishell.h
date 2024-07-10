@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 17:11:57 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/07/09 17:35:14 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/10 14:48:57 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ typedef struct t_b
 # define APPEND 4
 # define INPUT 5
 # define PIPE 6
-# define END 7
 
 typedef struct s_cmd
 {
@@ -98,5 +97,8 @@ int		is_type(t_cmd *cmd, int type);
 int		is_types(t_cmd *cmd, char *types);
 t_cmd	*next_run(t_cmd *cmd);
 void	redir_and_exec(t_b *mini, t_cmd *cmd);
+void	free_cmd(t_cmd *start);
+void	exec_cmd(t_b *mini, t_cmd *cmd);
+void	free_tab(char **tab);
 
 #endif
