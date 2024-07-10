@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/21 11:51:22 by cclaude           #+#    #+#             */
-/*   Updated: 2024/07/09 17:27:32 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/10 14:32:34 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,16 @@ void	redir_and_exec(t_mini *mini, t_token *token)
 	t_token	*next;
 	int		pipe;
 
+	(void) mini;
+	printf("token: %s\n", token->str);
 	prev = prev_sep(token, NOSKIP);
 	next = next_sep(token, NOSKIP);
-	/*
 	if (prev)
 		printf("prev: %s\n", prev->str);
 	if (next)
 		printf("next: %s\n", next->str);
-	*/
 	pipe = 0;
+	/*
 	if (is_type(prev, TRUNC))
 		redir(mini, token, TRUNC);
 	else if (is_type(prev, APPEND))
@@ -39,6 +40,7 @@ void	redir_and_exec(t_mini *mini, t_token *token)
 		pipe = minipipe(mini);
 	if (next && is_type(next, END) == 0 && pipe != 1)
 		redir_and_exec(mini, next->next);
+	*/
 	if ((is_type(prev, END) || is_type(prev, PIPE) || !prev)
 		&& pipe != 1 && mini->no_exec == 0)
 		exec_cmd(mini, token);
