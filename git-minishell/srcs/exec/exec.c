@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 15:42:31 by cclaude           #+#    #+#             */
-/*   Updated: 2024/05/31 13:42:49 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/07/11 17:52:17 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ void	exec_cmd(t_mini *mini, t_token *token)
 	if (mini->charge == 0)
 		return ;
 	cmd = cmd_tab(token);
+	i = 0;
+	while (cmd[i])
+		printf("%s\n", cmd[i++]);
 	i = 0;
 	while (cmd && cmd[i])
 	{
