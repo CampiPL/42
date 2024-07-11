@@ -6,7 +6,7 @@
 #    By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 10:29:43 by rmakhlou          #+#    #+#              #
-#    Updated: 2024/07/11 18:45:42 by ubuntu           ###   ########.fr        #
+#    Updated: 2024/07/11 19:02:57 by ubuntu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC	=	minishell.c	\
 		ft_clean.c	\
 		ft_prep.c	\
 		mini.c	\
+		utils.c	\
 		types.c	\
 		redirexec.c	\
 		free.c	\

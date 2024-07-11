@@ -5,26 +5,45 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/08 19:58:10 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/09 17:32:04 by ubuntu           ###   ########.fr       */
+/*   Created: 2024/07/11 19:03:06 by ubuntu            #+#    #+#             */
+/*   Updated: 2024/07/11 19:14:45 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	next_alloc(char *line, int *i)
+t_cmd	*next_run(t_cmd *token)
 {
-	int		j;
-
-	j = 0;
-	while (line[*i + j] && line[*i + j] != ' ')
-		j++;
-	return (j + 1);
+	while (token && token->type != CMD)
+	{
+		token = token->next;
+	}
+	return (token);
 }
 
-t_cmd	*next_run(t_cmd *cmd)
+int	next_alloc(char *line, int *i)
 {
-	while (cmd && cmd->type != CMD)
-		cmd = cmd->next;
-	return (cmd);
+	int		count;
+	int		j;
+	char	c;
+
+	count = 0;
+	j = 0;
+	c = ' ';
+	while (line[*i + j] && (line[*i + j] != ' ' || c != ' '))
+	{
+		if (c == ' ' && (line[*i + j] == '\'' || line[*i + j] == '\"'))
+			c = line[*i + j++];
+		else if (c != ' ' && line[*i + j] == c)
+		{
+			count += 2;
+			c = ' ';
+			j++;
+		}
+		else
+			j++;
+		if (line[*i + j - 1] == '\\')
+			count--;
+	}
+	return (j - count + 1);
 }

@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:14:02 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/07/11 18:48:27 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/11 19:00:30 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static char	*ft_path(char *cmd, char **env)
 			s = ft_substr(cmd, 0, ft_strlen(cmd, 32));
 		else
 		{
-			s = ft_strjoin(*env, "/", 1);
-			s = ft_strjoin(s, ft_substr(cmd, 0, ft_strlen(cmd, 32)), 6);
+			s = ft_strjoin(*env, "/");
+			s = ft_strjoin(s, ft_substr(cmd, 0, ft_strlen(cmd, 32)));
 		}
 		if (!access(s, F_OK))
 			return (free(cmd), s);
