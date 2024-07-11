@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_verifredir.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmakhlou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 13:12:42 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/06/27 15:09:45 by rmakhlou         ###   ########.fr       */
+/*   Updated: 2024/07/11 18:45:53 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	ft_skipredir(char *s)
 
 static int	ft_boolredir(char *s)
 {
-	int	i;
+	int		i;
 	char	*err;
 
 	i = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 17:11:57 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/07/10 14:48:57 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/07/11 18:43:43 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,14 @@ typedef struct s_cmd
 	struct s_cmd	*next;
 }	t_cmd;
 
+typedef struct s_sig
+{
+	int				sigint;
+	int				sigquit;
+	int				exit_status;
+	pid_t			pid;
+}				t_sig;
+
 char	*ft_strsimp(char *s);
 int		ft_verifcote(char *s);
 int		ft_verifpip(char *s);
@@ -97,8 +105,14 @@ int		is_type(t_cmd *cmd, int type);
 int		is_types(t_cmd *cmd, char *types);
 t_cmd	*next_run(t_cmd *cmd);
 void	redir_and_exec(t_b *mini, t_cmd *cmd);
+void	*ft_memdel(void *ptr);
 void	free_cmd(t_cmd *start);
 void	exec_cmd(t_b *mini, t_cmd *cmd);
-void	free_tab(char **tab);
+void	free_cmdarg(char **cmdarg);
+void	exec_bin(char **cmdarg, t_b *mini);
+//int		is_builtin(char *command);
+//int		exec_builtin(char **args, t_b *mini);
+
+extern t_sig	g_sig;
 
 #endif

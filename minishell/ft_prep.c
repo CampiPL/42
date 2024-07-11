@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_prep.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmakhlou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:14:02 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/07/04 14:14:44 by rmakhlou         ###   ########.fr       */
+/*   Updated: 2024/07/11 18:48:27 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static char	*ft_path(char *cmd, char **env)
 		if (!access(s, F_OK))
 			return (free(cmd), s);
 		env++;
-		//if (*env)
 		free(s);
 	}
 	return (cmd);
@@ -102,7 +101,7 @@ void	ft_prep(t_b *tb)
 {
 	char	**lst;
 	char	*tmp;
-	int	i;
+	int		i;
 
 	i = -1;
 	lst = ft_splitpip(tb->rd, '|');
@@ -114,13 +113,15 @@ void	ft_prep(t_b *tb)
 			tb->cmd[i].builtin = ft_strdup(lst[i]);
 		else if (ft_strlenstr(lst[i], "<>") == ft_strlen(lst[i], 0))
 		{
-			tb->cmd[i].path = ft_path(ft_substr(lst[i], 0, ft_strlen(lst[i], 32)), tb->penv);
+			tb->cmd[i].path = ft_path(ft_substr(lst[i], 0,
+						ft_strlen(lst[i], 32)), tb->penv);
 			tb->cmd[i].cmd = ft_splitpip(lst[i], 32);
 		}
 		else
 		{
 			tmp = ft_redsimpl(&tb->cmd[i], lst[i]);
-			tb->cmd[i].path = ft_path(ft_substr(tmp, 0, ft_strlen(tmp, 32)), tb->penv);
+			tb->cmd[i].path = ft_path(ft_substr(tmp, 0,
+						ft_strlen(tmp, 32)), tb->penv);
 			tb->cmd[i].cmd = ft_splitpip(tmp, 32);
 			free(tmp);
 		}

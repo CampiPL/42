@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:33:04 by jdepka            #+#    #+#             */
-/*   Updated: 2024/07/10 14:43:08 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/07/11 18:19:44 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static char	**cmd_tab(t_cmd *start)
 {
 	t_cmd	*cmd;
-	char	**tab;
+	char	**cmdarg;
 	int		i;
 
 	if (!start)
@@ -27,35 +27,35 @@ static char	**cmd_tab(t_cmd *start)
 		cmd = cmd->next;
 		i++;
 	}
-	if (!(tab = malloc(sizeof(char *) * i)))
+	cmdarg = malloc(sizeof(char *) * i);
+	if (!cmdarg)
 		return (NULL);
-	cmd = start->next;
-	tab[0] = start->str;
-	i = 1;
+	cmd = start;
+	i = 0;
 	while (cmd && cmd->type < TRUNC)
 	{
-		tab[i++] = cmd->str;
+		cmdarg[i++] = cmd->str;
 		cmd = cmd->next;
 	}
-	tab[i] = NULL;
-	return (tab);
+	cmdarg[i] = NULL;
+	return (cmdarg);
 }
 
 void	exec_cmd(t_b *mini, t_cmd *cmd)
 {
-	char	**cmd;
+	char	**cmdarg;
 	int		i;
 
-	cmd = cmd_tab(cmd);
+	(void) mini;
+	cmdarg = cmd_tab(cmd);
 	i = 0;
-	while (cmd && cmd[i])
-	{
-		cmd[i] = expansions(cmd[i], mini->env, mini->ret);
-		i++;
-	}
-	if (cmd && is_builtin(cmd[0]))
-		mini->ret = exec_builtin(cmd, mini);
-	else if (cmd)
-		mini->ret = exec_bin(cmd, mini->env, mini);
-	free_tab(cmd);
+	while (cmdarg[i])
+		printf("%s\n", cmdarg[i++]);
+	/*
+	if (cmdarg && is_builtin(cmdarg[0]))
+		exec_builtin(cmdarg, mini);
+	*/
+	if (cmdarg)
+		exec_bin(cmdarg, mini);
+	free_cmdarg(cmdarg);
 }

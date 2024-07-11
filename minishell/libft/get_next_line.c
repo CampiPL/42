@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmakhlou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 19:02:17 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/05/07 16:16:21 by rmakhlou         ###   ########.fr       */
+/*   Updated: 2024/07/11 18:53:31 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static char	*ft_read(int fd, char *sv)
 		if (b < 0)
 			return (free(rd), NULL);
 		rd[b] = 0;
-		sv = ft_strjoin(sv, rd, 6);
+		sv = ft_strjoin(sv, rd);
 	}
 	return (sv);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_clean.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmakhlou <rmakhlou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 08:08:56 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/07/02 14:25:01 by rmakhlou         ###   ########.fr       */
+/*   Updated: 2024/07/11 18:48:43 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_clean(t_b *tb)//, char **env)
 {
 	int	i;
-	
+
 	i = -1;
 	while (++i < tb->max)
 	{

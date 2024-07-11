@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redir.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmakhlou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 13:12:42 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/06/08 15:42:36 by rmakhlou         ###   ########.fr       */
+/*   Updated: 2024/07/11 18:47:20 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 int	ft_heredoc(char *s)
 {
-	char	*rd;
-	char	*hdc;
-	static	int	nb;
-	int		fd;
+	char		*rd;
+	char		hdc;
+	static int	nb;
+	int			fd;
 
 	hdc = ft_strjoin("/tmp/miniheredoc", ft_itoa(nb++), 3);
 	fd = open(hdc, O_RDWR | O_CREAT | O_TRUNC, 0644);
-	while(1)
+	while (1)
 	{
 		rd = readline("heredoc> ");
 		if (!ft_strncmp(rd, s, ft_strlen(s, 0)))
-			break;
+			break ;
 		ft_printf(fd, "%s\n", rd);
 		free(rd);
 	}
@@ -35,8 +35,9 @@ int	ft_heredoc(char *s)
 int	ft_redirin(char *s)
 {
 	int	fd;
+
 	fd = open(s, O_RDONLY);
-	if (fd = -1)
+	if (fd == -1)
 		ft_printf(2, "no such file or directory: %s\n", s);
 	return (free(s), fd);
 }

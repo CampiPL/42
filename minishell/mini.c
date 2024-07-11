@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:33:33 by jdepka            #+#    #+#             */
-/*   Updated: 2024/07/10 14:27:39 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/07/11 18:34:16 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,6 @@ void	mini(t_b *mini)
 	printf("%s\n", mini->rd);
 	start = get_start(mini->rd);
 	cmd = next_run(start);
-	/*
-	while (cmd)
-	{
-		printf("cmd: %s (%d)\n", cmd->str, cmd->type);
-		cmd = cmd->next;
-	}
-	*/
 	while (cmd)
 	{
 		printf("cmd: %s (%d)\n", cmd->str, cmd->type);

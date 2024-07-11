@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsimp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 10:51:39 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/06/16 18:39:04 by rmakhlou         ###   ########.fr       */
+/*   Updated: 2024/07/11 18:46:13 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_strsimp(char *s)
 {
 	size_t		i;
 	size_t		j;
-	char	*rt;
+	char		*rt;
 
 	i = 0;
 	rt = ft_calloc(ft_strlen(s, 0) + 1, sizeof(char));
@@ -48,7 +48,7 @@ char	*ft_strsimp(char *s)
 		else if (s[j] == 34 || s[j] == 39)
 			ft_cpycote(rt, s, &i, &j);
 		else
-		rt[i++] = s[j++];
+			rt[i++] = s[j++];
 	}
 	return (free(s), rt);
 }

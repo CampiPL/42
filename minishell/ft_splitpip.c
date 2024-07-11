@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_splitpip.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmakhlou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 12:58:39 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/07/02 13:25:15 by rmakhlou         ###   ########.fr       */
+/*   Updated: 2024/07/11 18:46:21 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,9 @@ static	size_t	ft_strlensc(char *s, char c)
 char	**ft_splitpip(char *s, char c)
 {
 	char	**tmp;
-	int	i;
+	int		i;
 
 	i = 0;
-//	if (!ft_cnt(s, c))
-//		return (NULL);
 	tmp = ft_calloc(ft_cnt(s, c) + 2, sizeof(char *));
 	if (!tmp)
 		return (NULL);

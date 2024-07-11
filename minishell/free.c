@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:16:55 by jdepka            #+#    #+#             */
-/*   Updated: 2024/07/10 14:47:56 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/07/11 18:29:32 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	*ft_memdel(void *ptr)
+void	*ft_memdel(void *ptr)
 {
 	if (ptr)
 	{
@@ -37,17 +37,17 @@ void	free_cmd(t_cmd *start)
 	}
 }
 
-void	free_tab(char **tab)
+void	free_cmdarg(char **cmdarg)
 {
 	int	i;
 
 	i = 0;
-	while (tab[i])
+	while (cmdarg[i])
 	{
-		if (tab[i])
-			ft_memdel(tab[i]);
+		if (cmdarg[i])
+			ft_memdel(cmdarg[i]);
 		i++;
 	}
-	if (tab)
-		ft_memdel(tab);
+	if (cmdarg)
+		ft_memdel(cmdarg);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 10:51:39 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/07/10 14:05:02 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/07/11 18:45:20 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ int	main(int ac, char **av, char **env)
 {
 	t_b		tb;
 	char	**tmp;
-	//int		i;
-	//int		j;
 
 	ft_signal();
 	ft_init(&tb, &env);
@@ -81,22 +79,9 @@ int	main(int ac, char **av, char **env)
 			tb.rd = ft_convarg(tb.rd);
 			ft_prep(&tb);
 			tmp = ft_splitpip(tb.rd, '|');
-			/*
-			i = -1;
-			while (tmp && tmp[++i])
-			{
-				printf("---%i cmd ---\n%s\n---path = %s\n---builtin = %s\n", i, tmp[i], tb.cmd[i].path, tb.cmd[i].builtin);
-				j = -1;
-				printf("+++\n");
-				while (++j < ft_lstlen(tb.cmd[i].cmd))
-					printf("%s\n", tb.cmd[i].cmd[j]);
-			}
-			printf("-%s\n", tb.rd);
-			*/
 			mini(&tb);
 			ft_clean(&tb);
 			ft_freebulk("sl", tb.rd, tmp);
-			//free(tb.rd);
 		}
 	}
 }

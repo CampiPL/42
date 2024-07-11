@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 20:15:09 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/08 20:19:02 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/11 18:49:02 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_strcmp(const char *s1, const char *s2)
 
 	i = 0;
 	while ((s1[i] || s2[i]))
-	{	
+	{
 		if (s1[i] != s2[i])
 			return (s1[i] - s2[i]);
 		i++;
