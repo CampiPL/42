@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 17:11:57 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/07/11 18:43:43 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/11 20:41:42 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ void	free_cmd(t_cmd *start);
 void	exec_cmd(t_b *mini, t_cmd *cmd);
 void	free_cmdarg(char **cmdarg);
 void	exec_bin(char **cmdarg, t_b *mini);
+void	sig_init(void);
 //int		is_builtin(char *command);
 //int		exec_builtin(char **args, t_b *mini);
 

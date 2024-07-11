@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 10:51:39 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/07/11 18:59:39 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/11 20:57:40 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int	main(int ac, char **av, char **env)
 			tb.rd = ft_convarg(tb.rd);
 			ft_prep(&tb);
 			tmp = ft_splitpip(tb.rd, '|');
+			sig_init();
 			mini(&tb);
 			ft_clean(&tb);
 			ft_freebulk("sl", tb.rd, tmp);

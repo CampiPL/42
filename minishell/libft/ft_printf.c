@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmakhlou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 13:21:20 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/06/11 18:52:26 by rmakhlou         ###   ########.fr       */
+/*   Updated: 2024/07/11 20:37:09 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static char	*vtype(const char *s, va_list ap, int *i)
 		t = ft_ultoa_b(va_arg(ap, unsigned int), "0123456789ABCDEF");
 	else if (s && *s == 'p')
 		t = ft_strjoin("0x", ft_ultoa_b(va_arg
-					(ap, unsigned long int), "0123456789abcdef"), 3);
+					(ap, unsigned long int), "0123456789abcdef"));
 	else if (s && *s == '%')
 		t = ft_cstr('%', i);
 	if (s && *s == 'p' && !ft_strncmp(t, "0x0", 3))

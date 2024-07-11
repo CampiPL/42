@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 19:03:06 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/11 19:14:45 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/11 20:41:38 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,12 @@ int	next_alloc(char *line, int *i)
 			count--;
 	}
 	return (j - count + 1);
+}
+
+void	sig_init(void)
+{
+	g_sig.sigint = 0;
+	g_sig.sigquit = 0;
+	g_sig.pid = 0;
+	g_sig.exit_status = 0;
 }
