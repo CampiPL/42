@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 10:51:39 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/07/11 20:57:40 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/12 11:55:48 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ static char	**ft_cenv(void)
 	char	**tmp;
 
 	tmp = ft_calloc(5, sizeof(char *));
-	tmp[0] = ft_strjoin("PWD=", getcwd(tmp[0], 1024));
-	tmp[1] = ft_strjoin("OLDPWD=", getcwd(tmp[1], 1024));
-	tmp[2] = ft_strjoin("SHLVL=1", NULL);
-	tmp[3] = ft_strjoin("PATH=", "/usr/sbin:/usr/bin:/sbin:/bin");
+	tmp[0] = ft_strjoin("PWD=", getcwd(tmp[0], 1024), 3);
+	tmp[1] = ft_strjoin("OLDPWD=", getcwd(tmp[1], 1024), 3);
+	tmp[2] = ft_strjoin("SHLVL=1", NULL, 1);
+	tmp[3] = ft_strjoin("PATH=", "/usr/sbin:/usr/bin:/sbin:/bin", 1);
 	return (tmp);
 }
 

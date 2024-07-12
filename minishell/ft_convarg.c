@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convarg.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rmakhlou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:22:43 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/07/11 19:00:10 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/09 13:27:49 by rmakhlou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,16 @@ static void	ft_conv2(char **rt, char *s, size_t *i)
 {
 	char	*var;
 
-	if (ft_isalpha(s[*i + 1]))
+	if (s[*i + 1] == '?')
+	{
+		*i += 2;
+		*rt = ft_strjoin(*rt, ft_geterrno(), 6);
+	}
+	else if (ft_isalpha(s[*i + 1]))
 	{
 		*i += 1;
 		var = ft_substr(s, *i, ft_strlenstr(s + *i, " '<>|\"$"));
-		*rt = ft_strjoin(*rt, getenv(var));
+		*rt = ft_strjoin(*rt, getenv(var), 2);
 		*i += ft_strlenstr(s + *i, " '<>|\"$");
 		free(var);
 	}
@@ -28,7 +33,7 @@ static void	ft_conv2(char **rt, char *s, size_t *i)
 		*i += 1;
 	else
 	{
-		*rt = ft_strjoin(*rt, ft_substr(s, *i, 1));
+		*rt = ft_strjoin(*rt, ft_substr(s, *i, 1), 6);
 		*i += 1;
 	}
 }
@@ -44,9 +49,9 @@ char	*ft_convarg(char *s)
 	{
 		if (s[i] == 39)
 		{
-			rt = ft_strjoin(rt, ft_substr(s, i++, 1));
+			rt = ft_strjoin(rt, ft_substr(s, i++, 1), 6);
 			rt = ft_strjoin(rt, ft_substr(s, i,
-						ft_strlen(s + i, 39) + 1));
+						ft_strlen(s + i, 39) + 1), 6);
 			i += ft_strlen(s + i, 39) + 1;
 		}
 		else if (s[i] == '$')
@@ -54,7 +59,7 @@ char	*ft_convarg(char *s)
 		else
 		{
 			rt = ft_strjoin(rt, ft_substr(s, i,
-						ft_strlenstr(s + i, "'$")));
+						ft_strlenstr(s + i, "'$")), 6);
 			i += ft_strlenstr(s + i, "'$");
 		}
 	}

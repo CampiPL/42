@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redir.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 13:12:42 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/07/11 18:47:20 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/12 12:10:47 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_heredoc(char *s)
 {
 	char		*rd;
-	char		hdc;
+	char		*hdc;
 	static int	nb;
 	int			fd;
 

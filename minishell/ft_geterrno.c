@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_verifcote.c                                     :+:      :+:    :+:   */
+/*   ft_geterrno.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/06 10:51:39 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/07/12 12:11:05 by jdepka           ###   ########.fr       */
+/*   Created: 2024/07/09 12:58:49 by rmakhlou          #+#    #+#             */
+/*   Updated: 2024/07/12 11:57:32 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_verifcote(char *s)
+void	ft_seterrno(int err)
 {
-	int		i;
-	char	c;
+	int	fd;
 
-	i = -1;
-	if (!s)
-		return (0);
-	while (s[++i])
-	{
-		i += (ft_strlenstr(s + i, "\"'"));
-		c = s[i];
-		if (!c)
-			break ;
-		while (s[++i] != c)
-			if (!s[i])
-				return (ft_printf(2, "Error : unclosed cote\n"));
-	}
-	return (0);
+	fd = open("/tmp/error_val", O_RDWR | O_CREAT | O_TRUNC, 0777);
+	ft_printf(fd, "%i", err);
+	close(fd);
+}
+
+char	*ft_geterrno(void)
+{
+	int		fd;
+	char	*rt;
+
+	fd = open("/tmp/error_val", O_RDONLY);
+	rt = get_next_line(fd);
+	close(fd);
+	return (rt);
 }

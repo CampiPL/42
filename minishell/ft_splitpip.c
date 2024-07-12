@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_splitpip.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 12:58:39 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/07/11 18:46:21 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/12 12:10:52 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ char	**ft_splitpip(char *s, char c)
 	int		i;
 
 	i = 0;
+//	if (!ft_cnt(s, c))
+//		return (NULL);
 	tmp = ft_calloc(ft_cnt(s, c) + 2, sizeof(char *));
 	if (!tmp)
 		return (NULL);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+         #
+#    By: rmakhlou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 02:28:07 by rmakhlou          #+#    #+#              #
-#    Updated: 2024/07/08 20:16:47 by ubuntu           ###   ########.fr        #
+#    Updated: 2024/06/11 18:53:14 by rmakhlou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,6 @@ SRC		=	ft_atoi.c 	\
 			ft_strlenstr.c 	\
 			ft_strmapi.c 	\
 			ft_strncmp.c 	\
-			ft_strcmp.c 	\
 			ft_strnstr.c 	\
 			ft_strrchr.c 	\
 			ft_strtrim.c 	\
