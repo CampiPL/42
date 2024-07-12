@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 15:42:31 by cclaude           #+#    #+#             */
-/*   Updated: 2024/07/11 17:52:17 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/12 20:59:48 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,24 @@ void	exec_cmd(t_mini *mini, t_token *token)
 		return ;
 	cmd = cmd_tab(token);
 	i = 0;
-	while (cmd[i])
-		printf("%s\n", cmd[i++]);
-	i = 0;
 	while (cmd && cmd[i])
 	{
 		cmd[i] = expansions(cmd[i], mini->env, mini->ret);
 		i++;
 	}
+	// i = 0;
+	// while (cmd[i])
+	// {
+	// 	printf("cmdarg[%i]: %s\n", i, cmd[i]);
+	// 	i++;
+	// }
 	if (cmd && ft_strcmp(cmd[0], "exit") == 0 && has_pipe(token) == 0)
 		mini_exit(mini, cmd);
+	/*
 	else if (cmd && is_builtin(cmd[0]))
 		mini->ret = exec_builtin(cmd, mini);
-	else if (cmd)
+	*/
+	/*else*/ if (cmd)
 		mini->ret = exec_bin(cmd, mini->env, mini);
 	free_tab(cmd);
 	ft_close(mini->pipin);
@@ -70,4 +75,5 @@ void	exec_cmd(t_mini *mini, t_token *token)
 	mini->pipin = -1;
 	mini->pipout = -1;
 	mini->charge = 0;
+	// printf("Docieram do konca exec %s\n", token->str);
 }

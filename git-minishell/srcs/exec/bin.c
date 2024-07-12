@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bin.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macrespo <macrespo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 15:37:17 by cclaude           #+#    #+#             */
-/*   Updated: 2020/08/31 13:23:30 by macrespo         ###   ########.fr       */
+/*   Updated: 2024/07/12 20:59:16 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,24 +47,34 @@ int			magic_box(char *path, char **args, t_env *env, t_mini *mini)
 	int		ret;
 
 	ret = SUCCESS;
+	// printf("Jestesmy w magicznym pudelku :D!: %s\n", args[0]);
 	g_sig.pid = fork();
 	if (g_sig.pid == 0)
 	{
+		// printf("Uruchamiam komende :): %s\n", args[0]);
 		ptr = env_to_str(env);
 		env_array = ft_split(ptr, '\n');
 		ft_memdel(ptr);
 		if (ft_strchr(path, '/') != NULL)
+		{
+			// printf("KOMENDA URUCHOMIONA: %s\n", args[0]);
 			execve(path, args, env_array);
+		}
+		// printf("Tu nie docieram: %s\n", args[0]);
 		ret = error_message(path);
 		free_tab(env_array);
 		free_token(mini->start);
 		exit(ret);
 	}
 	else
+	{
+		// printf("Czekam...: %s\n", args[0]);
 		waitpid(g_sig.pid, &ret, 0);
+	}
 	if (g_sig.sigint == 1 || g_sig.sigquit == 1)
 		return (g_sig.exit_status);
 	ret = (ret == 32256 || ret == 32512) ? ret / 256 : !!ret;
+	// printf("Dotarlem do konca bin: %s\n", args[0]);
 	return (ret);
 }
 
@@ -107,6 +117,7 @@ int			exec_bin(char **args, t_env *env, t_mini *mini)
 
 	i = 0;
 	ret = UNKNOWN_COMMAND;
+	// printf("Wchodzimy do magicznego pudelka?: %s\n", args[0]);
 	while (env && env->value && ft_strncmp(env->value, "PATH=", 5) != 0)
 		env = env->next;
 	if (env == NULL || env->next == NULL)

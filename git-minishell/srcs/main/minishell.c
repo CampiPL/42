@@ -6,7 +6,7 @@
 /*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/21 11:51:22 by cclaude           #+#    #+#             */
-/*   Updated: 2024/07/10 14:32:34 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/07/12 20:58:17 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,13 @@ void	redir_and_exec(t_mini *mini, t_token *token)
 	t_token	*next;
 	int		pipe;
 
-	(void) mini;
-	printf("token: %s\n", token->str);
+	// printf("token: %s\n", token->str);
 	prev = prev_sep(token, NOSKIP);
 	next = next_sep(token, NOSKIP);
-	if (prev)
-		printf("prev: %s\n", prev->str);
-	if (next)
-		printf("next: %s\n", next->str);
+	// if (prev)
+	// 	printf("prev: %s\n", prev->str);
+	// if (next)
+	// 	printf("next: %s\n", next->str);
 	pipe = 0;
 	/*
 	if (is_type(prev, TRUNC))
@@ -36,33 +35,40 @@ void	redir_and_exec(t_mini *mini, t_token *token)
 		redir(mini, token, APPEND);
 	else if (is_type(prev, INPUT))
 		input(mini, token);
-	else if (is_type(prev, PIPE))
-		pipe = minipipe(mini);
-	if (next && is_type(next, END) == 0 && pipe != 1)
-		redir_and_exec(mini, next->next);
 	*/
+	/*else*/ if (is_type(prev, PIPE))
+	{
+		// printf("Pipe\n");
+		pipe = minipipe(mini);
+	}
+	if (next && is_type(next, END) == 0 && pipe != 1)
+	{
+		// printf("Redir\n");
+		redir_and_exec(mini, next->next);
+	}
 	if ((is_type(prev, END) || is_type(prev, PIPE) || !prev)
 		&& pipe != 1 && mini->no_exec == 0)
+	{
+		// printf("Exec %s\n", token->str);
 		exec_cmd(mini, token);
+	}
 }
 
 void	minishell(t_mini *mini)
 {
 	t_token	*token;
 	int		status;
-	//t_token	*t;
 
+	token = next_run(mini->start, NOSKIP);
+	// while (token)
+	// {
+	// 	printf("Cmd tokens: %s\n", token->str);
+	// 	token = token->next;
+	// }
 	token = next_run(mini->start, NOSKIP);
 	token = (is_types(mini->start, "TAI")) ? mini->start->next : token;
 	while (mini->exit == 0 && token)
 	{
-		printf("token - %s\n", token->str);
-		//t = token;
-		//while (t->next)
-		//{
-		//	printf("next token - %s\n", t->next->str);
-		//	t = t->next;
-		//}
 		mini->charge = 1;
 		mini->parent = 1;
 		mini->last = 1;
@@ -75,6 +81,7 @@ void	minishell(t_mini *mini)
 		mini->ret = (mini->last == 0) ? status : mini->ret;
 		if (mini->parent == 0)
 		{
+			// printf("lol\n");
 			free_token(mini->start);
 			exit(mini->ret);
 		}

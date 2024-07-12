@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 15:35:12 by cclaude           #+#    #+#             */
-/*   Updated: 2024/07/09 17:30:47 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/12 15:11:43 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_token	*next_run(t_token *token, int skip)
 		token = token->next;
 	while (token && token->type != CMD)
 	{
+		// printf("Checking token: %s\n", token->str);
 		token = token->next;
 		if (token && token->type == CMD && token->prev == NULL)
 			;
