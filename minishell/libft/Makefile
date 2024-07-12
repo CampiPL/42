@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rmakhlou <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 02:28:07 by rmakhlou          #+#    #+#              #
-#    Updated: 2024/06/11 18:53:14 by rmakhlou         ###   ########.fr        #
+#    Updated: 2024/07/12 12:20:48 by jdepka           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,8 @@ SRC		=	ft_atoi.c 	\
 			ft_tolower.c 	\
 			ft_toupper.c	\
 			ft_ultoa_b.c 	\
-			get_next_line.c	
+			get_next_line.c	\
+			ft_strcmp.c
 
 OBJ = ${SRC:.c=.o}
 

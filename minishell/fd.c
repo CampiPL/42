@@ -1,35 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   fd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/07 18:55:13 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/07/12 12:29:51 by jdepka           ###   ########.fr       */
+/*   Created: 2024/07/12 16:08:03 by jdepka            #+#    #+#             */
+/*   Updated: 2024/07/12 17:05:04 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minishell.h"
 
-size_t	ft_strlen(const char *s, char c)
+void	ft_close(int fd)
 {
-	size_t	i;
-
-	i = 0;
-	while (s && s[i] && s[i] != c)
-		i++;
-	return (i);
+	if (fd > 0)
+		close(fd);
 }
 
-size_t	strlen(const char *s)
+void	reset_std(t_b *mini)
 {
-	size_t	dlugosc;
+	dup2(mini->in, 0);
+	dup2(mini->out, 1);
+}
 
-	dlugosc = 0;
-	while (s[dlugosc] != '\0')
-	{
-		dlugosc++;
-	}
-	return (dlugosc);
+void	close_fds(t_b *mini)
+{
+	// ft_close(mini->fdin);
+	// ft_close(mini->fdout);
+	ft_close(mini->pipin);
+	ft_close(mini->pipout);
+}
+
+void	reset_fds(t_b *mini)
+{
+	// mini->fdin = -1;
+	// mini->fdout = -1;
+	mini->pipin = -1;
+	mini->pipout = -1;
 }

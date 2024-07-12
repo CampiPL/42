@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:33:33 by jdepka            #+#    #+#             */
-/*   Updated: 2024/07/11 20:57:08 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/12 20:57:47 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,22 @@ static t_cmd	*next_cmd(char *rd, int *i)
 {
 	t_cmd	*cmd;
 	int		j;
-	char	quote;
+	char	c;
 
 	j = 0;
-	quote = ' ';
+	c = ' ';
 	cmd = malloc(sizeof(t_cmd));
 	cmd->str = malloc(sizeof(char) * next_alloc(rd, i));
 	if (!cmd || !cmd->str)
 		return (NULL);
-	while (rd[*i] && (rd[*i] != ' ' || quote != ' '))
+	while (rd[*i] && (rd[*i] != ' ' || c != ' '))
 	{
-		if (quote == ' ' && (rd[*i] == '\'' || rd[*i] == '\"'))
-			quote = rd[(*i)++];
-		else if (quote != ' ' && rd[*i] == quote && (*i)++)
-			quote = ' ';
+		if (c == ' ' && (rd[*i] == '\'' || rd[*i] == '\"'))
+			c = rd[(*i)++];
+		else if (c != ' ' && rd[(*i)++] == c)
+			c = ' ';
+		else if (rd[*i] == '\\' && (*i)++)
+			cmd->str[j++] = rd[(*i)++];
 		else
 			cmd->str[j++] = rd[(*i)++];
 	}
@@ -46,7 +48,6 @@ static t_cmd	*get_start(char *rd)
 	prev = NULL;
 	next = NULL;
 	i = 0;
-	(void) rd;
 	while (rd[i])
 	{
 		next = next_cmd(rd, &i);
@@ -68,14 +69,36 @@ void	mini(t_b *mini)
 {
 	t_cmd	*start;
 	t_cmd	*cmd;
+	int		status;
 
-	printf("%s\n", mini->rd);
+	// printf("Line: %s\n", mini->rd);
 	start = get_start(mini->rd);
 	cmd = next_run(start);
+	// while (cmd)
+	// {
+	// 	printf("Cmd tokens: %s\n", cmd->str);
+	// 	cmd = cmd->next;
+	// }
+	cmd = next_run(start);
+	reset_fds(mini);
+	mini->in = dup(0);
+	mini->out = dup(1);
 	while (cmd)
 	{
-		printf("cmd: %s (%d)\n", cmd->str, cmd->type);
+		mini->charge = 1;
+		mini->parent = 1;
 		redir_and_exec(mini, cmd);
+		// printf("Pora to konczyc\n");
+		reset_std(mini);
+		close_fds(mini);
+		reset_fds(mini);
+		waitpid(-1, &status, 0);
+		if (mini->parent == 0)
+		{
+			// printf("lol\n");
+			free_cmd(start);
+			exit(0);
+		}
 		cmd = next_run(cmd->next);
 	}
 	free_cmd(start);

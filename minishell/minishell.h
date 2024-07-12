@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 17:11:57 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/07/11 20:41:42 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/12 18:37:44 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,12 @@ typedef struct t_b
 	int			lenv;
 	int			err;
 	int			hist;
-	//int		pid;
-	//int		**pip;
+	int			pipin;
+	int			pipout;
+	int			in;
+	int			out;
+	int			parent;
+	int			charge;
 	int			i;
 	int			max;
 	struct t_c	*cmd;
@@ -98,6 +102,7 @@ char	*ft_convarg(char *s);
 void	ft_prep(t_b *tb);
 void	ft_clean(t_b *tb);
 void	mini(t_b *mini);
+char	*ft_geterrno(void);
 
 int		next_alloc(char *line, int *i);
 void	type_arg(t_cmd *cmd);
@@ -111,6 +116,10 @@ void	exec_cmd(t_b *mini, t_cmd *cmd);
 void	free_cmdarg(char **cmdarg);
 void	exec_bin(char **cmdarg, t_b *mini);
 void	sig_init(void);
+void	ft_close(int fd);
+void	close_fds(t_b *mini);
+void	reset_fds(t_b *mini);
+void	reset_std(t_b *mini);
 //int		is_builtin(char *command);
 //int		exec_builtin(char **args, t_b *mini);
 

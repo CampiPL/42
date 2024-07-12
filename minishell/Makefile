@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+         #
+#    By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 10:29:43 by rmakhlou          #+#    #+#              #
-#    Updated: 2024/07/11 19:02:57 by ubuntu           ###   ########.fr        #
+#    Updated: 2024/07/12 16:41:24 by jdepka           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC	=	minishell.c	\
 		ft_convarg.c	\
 		ft_clean.c	\
 		ft_prep.c	\
+		ft_geterrno.c	\
 		mini.c	\
 		utils.c	\
 		types.c	\
@@ -29,8 +30,9 @@ SRC	=	minishell.c	\
 		free.c	\
 		exec.c	\
 		bin.c	\
-		#builtin.c
-#		ft_redir.c	#
+		fd.c
+#		builtin.c
+#		ft_redir.c
 
 OBJ = ${SRC:.c=.o}
 

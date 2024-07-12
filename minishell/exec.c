@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:33:04 by jdepka            #+#    #+#             */
-/*   Updated: 2024/07/11 18:19:44 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/12 21:01:14 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static char	**cmd_tab(t_cmd *start)
+char	**cmd_tab(t_cmd *start)
 {
 	t_cmd	*cmd;
 	char	**cmdarg;
@@ -30,8 +30,9 @@ static char	**cmd_tab(t_cmd *start)
 	cmdarg = malloc(sizeof(char *) * i);
 	if (!cmdarg)
 		return (NULL);
-	cmd = start;
-	i = 0;
+	cmd = start->next;
+	cmdarg[0] = start->str;
+	i = 1;
 	while (cmd && cmd->type < TRUNC)
 	{
 		cmdarg[i++] = cmd->str;
@@ -44,18 +45,28 @@ static char	**cmd_tab(t_cmd *start)
 void	exec_cmd(t_b *mini, t_cmd *cmd)
 {
 	char	**cmdarg;
-	int		i;
+	// int		i;
 
-	(void) mini;
+	if (mini->charge == 0)
+		return ;
 	cmdarg = cmd_tab(cmd);
-	i = 0;
-	while (cmdarg[i])
-		printf("%s\n", cmdarg[i++]);
+	// i = 0;
+	// while (cmdarg[i])
+	// {
+	// 	printf("cmdarg[%i]: %s\n", i, cmdarg[i]);
+	// 	i++;
+	// }
 	/*
 	if (cmdarg && is_builtin(cmdarg[0]))
 		exec_builtin(cmdarg, mini);
 	*/
-	if (cmdarg)
+	/*else*/ if (cmdarg)
 		exec_bin(cmdarg, mini);
-	free_cmdarg(cmdarg);
+	ft_memdel(cmdarg);
+	ft_close(mini->pipin);
+	ft_close(mini->pipout);
+	mini->pipin = -1;
+	mini->pipout = -1;
+	mini->charge = 0;
+	// printf("Docieram do konca exec %s\n", cmd->str);
 }

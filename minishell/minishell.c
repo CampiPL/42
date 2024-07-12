@@ -6,11 +6,13 @@
 /*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 10:51:39 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/07/12 11:55:48 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/07/12 20:32:13 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+t_sig	g_sig;
 
 static char	**ft_cenv(void)
 {

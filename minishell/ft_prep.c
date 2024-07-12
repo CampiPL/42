@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_prep.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmakhlou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:14:02 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/07/09 15:17:43 by rmakhlou         ###   ########.fr       */
+/*   Updated: 2024/07/12 15:07:22 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static char	*ft_path(char *cmd, char **env)
 		if (!access(s, F_OK))
 			return (free(cmd), s);
 		env++;
-		//if (*env)
 		free(s);
 	}
 	return (cmd);
@@ -102,7 +101,7 @@ void	ft_prep(t_b *tb)
 {
 	char	**lst;
 	char	*tmp;
-	int	i;
+	int		i;
 
 	i = -1;
 	lst = ft_splitpip(tb->rd, '|');

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmakhlou <rmakhlou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 02:27:56 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/06/11 18:53:04 by rmakhlou         ###   ########.fr       */
+/*   Updated: 2024/07/12 12:30:09 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,8 @@ int		ft_lstlen(char **lst);
 int		ft_isspace(int c);
 size_t	ft_strlenstr(const char *s, char *c);
 size_t	ft_skipchar(const char *s, char c);
+int		ft_strcmp(const char *s1, const char *s2);
+char	*strjoin(char const *s1, char const *s2);
+size_t	strlen(const char *s);
 
 #endif
