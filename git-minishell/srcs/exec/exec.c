@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 15:42:31 by cclaude           #+#    #+#             */
-/*   Updated: 2024/07/12 20:59:48 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/07/13 10:57:01 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,9 @@ void	exec_cmd(t_mini *mini, t_token *token)
 	// }
 	if (cmd && ft_strcmp(cmd[0], "exit") == 0 && has_pipe(token) == 0)
 		mini_exit(mini, cmd);
-	/*
 	else if (cmd && is_builtin(cmd[0]))
 		mini->ret = exec_builtin(cmd, mini);
-	*/
-	/*else*/ if (cmd)
+	else if (cmd)
 		mini->ret = exec_bin(cmd, mini->env, mini);
 	free_tab(cmd);
 	ft_close(mini->pipin);

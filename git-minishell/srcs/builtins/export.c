@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macrespo <macrespo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 18:15:54 by macrespo          #+#    #+#             */
-/*   Updated: 2020/08/27 17:22:54 by cclaude          ###   ########.fr       */
+/*   Updated: 2024/07/13 13:38:13 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int			env_add(const char *value, t_env *env)
 
 	if (env && env->value == NULL)
 	{
+		printf("szybka akcja!\n");
 		env->value = ft_strdup(value);
 		return (SUCCESS);
 	}
@@ -48,6 +49,7 @@ int			env_add(const char *value, t_env *env)
 	tmp = env->next;
 	env->next = new;
 	new->next = tmp;
+	printf("sukces!\n");
 	return (SUCCESS);
 }
 
