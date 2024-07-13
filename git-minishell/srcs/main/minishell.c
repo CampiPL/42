@@ -6,7 +6,7 @@
 /*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/21 11:51:22 by cclaude           #+#    #+#             */
-/*   Updated: 2024/07/12 20:58:17 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/07/13 21:42:15 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,13 @@ void	redir_and_exec(t_mini *mini, t_token *token)
 	// if (next)
 	// 	printf("next: %s\n", next->str);
 	pipe = 0;
-	/*
 	if (is_type(prev, TRUNC))
 		redir(mini, token, TRUNC);
 	else if (is_type(prev, APPEND))
 		redir(mini, token, APPEND);
 	else if (is_type(prev, INPUT))
 		input(mini, token);
-	*/
-	/*else*/ if (is_type(prev, PIPE))
+	else if (is_type(prev, PIPE))
 	{
 		// printf("Pipe\n");
 		pipe = minipipe(mini);
