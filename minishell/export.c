@@ -6,7 +6,7 @@
 /*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 12:06:49 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/13 20:24:10 by rmakhlou         ###   ########.fr       */
+/*   Updated: 2024/07/13 22:01:28 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,10 +94,7 @@ void	ft_export(char **args, t_b *mini)
 
 	new_env = 0;
 	if (!args[1])
-	{
-		print_sorted_env(mini->secret_env);
-		return ;
-	}
+		return (print_sorted_env(mini->secret_env));
 	else
 	{
 		error_ret = is_valid_env(args[1]);

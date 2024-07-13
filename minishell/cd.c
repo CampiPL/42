@@ -6,52 +6,43 @@
 /*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 12:08:51 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/13 18:26:57 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/07/13 21:52:21 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	print_error(char **args)
+static char	*copy_env_value(const char *env_var, size_t len)
 {
-	ft_putstr_fd("cd: ", 2);
-	if (args[2])
-		ft_putstr_fd("string not in pwd: ", 2);
-	else
+	char	*value;
+	int		j;
+	int		k;
+	int		s_alloc;
+
+	s_alloc = strlen(env_var) - len;
+	value = malloc(sizeof(char) * (s_alloc + 1));
+	if (!value)
+		return (NULL);
+	k = 0;
+	j = 0;
+	while (env_var[k++])
 	{
-		ft_putstr_fd(strerror(errno), 2);
-		ft_putstr_fd(": ", 2);
+		if (k > (int)len)
+			value[j++] = env_var[k];
 	}
-	ft_putendl_fd(args[1], 2);
+	value[j] = '\0';
+	return (value);
 }
 
 static char	*get_env_path(char **env, const char *var, size_t len)
 {
-	char	*oldpwd;
 	int		i;
-	int		j;
-	int		k;
-	int		s_alloc;
 
 	i = 0;
 	while (env && env[i])
 	{
 		if (ft_strncmp(env[i], var, len) == 0)
-		{
-			s_alloc = strlen(env[i]) - len;
-			oldpwd = malloc(sizeof(char) * s_alloc + 1);
-			if (!oldpwd)
-				return (NULL);
-			k = 0;
-			j = 0;
-			while (env[i][k++])
-			{
-				if (k > (int)len)
-					oldpwd[j++] = env[i][k];
-			}
-			oldpwd[j] = '\0';
-			return (oldpwd);
-		}
+			return (copy_env_value(env[i], len));
 		i++;
 	}
 	return (NULL);
@@ -115,6 +106,16 @@ void	ft_cd(char **args, char **env)
 		update_oldpwd(env);
 		cd_ret = chdir(args[1]);
 		if (cd_ret != 0)
-			print_error(args);
+		{
+			ft_putstr_fd("cd: ", 2);
+			if (args[2])
+				ft_putstr_fd("string not in pwd: ", 2);
+			else
+			{
+				ft_putstr_fd(strerror(errno), 2);
+				ft_putstr_fd(": ", 2);
+			}
+			ft_putendl_fd(args[1], 2);
+		}
 	}
 }

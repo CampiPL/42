@@ -6,7 +6,7 @@
 /*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 20:42:43 by jdepka            #+#    #+#             */
-/*   Updated: 2024/07/13 20:59:45 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/07/13 21:41:39 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	redir(t_b *mini, t_cmd *cmd, int type)
 		ft_putstr_fd("minishell: ", 2);
 		ft_putstr_fd(cmd->str, 2);
 		ft_putendl_fd(": No such file or directory", 2);
-		// mini->no_exec = 1;
 		return ;
 	}
 	dup2(mini->fdout, 1);
@@ -39,7 +38,6 @@ void	input(t_b *mini, t_cmd *cmd)
 		ft_putstr_fd("minishell: ", 2);
 		ft_putstr_fd(cmd->str, 2);
 		ft_putendl_fd(": No such file or directory", 2);
-		// mini->no_exec = 1;
 		return ;
 	}
 	dup2(mini->fdin, 0);

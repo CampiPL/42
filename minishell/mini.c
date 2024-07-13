@@ -6,7 +6,7 @@
 /*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:33:33 by jdepka            #+#    #+#             */
-/*   Updated: 2024/07/13 21:19:49 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/07/13 22:05:17 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,16 @@ static t_cmd	*get_start(char *rd)
 	return (next);
 }
 
+static void	mini_run_commands(t_b *mini, t_cmd *cmd)
+{
+	mini->exec = 1;
+	mini->parent = 1;
+	redir_and_exec(mini, cmd);
+	reset_std(mini);
+	close_fds(mini);
+	reset_fds(mini);
+}
+
 void	mini(t_b *mini)
 {
 	t_cmd	*start;
@@ -68,12 +78,7 @@ void	mini(t_b *mini)
 	mini->out = dup(1);
 	while (cmd)
 	{
-		mini->exec = 1;
-		mini->parent = 1;
-		redir_and_exec(mini, cmd);
-		reset_std(mini);
-		close_fds(mini);
-		reset_fds(mini);
+		mini_run_commands(mini, cmd);
 		waitpid(-1, &status, 0);
 		if (mini->parent == 0)
 		{
