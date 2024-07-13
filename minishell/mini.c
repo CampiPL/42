@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:33:33 by jdepka            #+#    #+#             */
-/*   Updated: 2024/07/12 20:57:47 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/07/13 11:40:17 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,16 @@ static t_cmd	*next_cmd(char *rd, int *i)
 {
 	t_cmd	*cmd;
 	int		j;
-	char	c;
 
 	j = 0;
-	c = ' ';
 	cmd = malloc(sizeof(t_cmd));
 	cmd->str = malloc(sizeof(char) * next_alloc(rd, i));
 	if (!cmd || !cmd->str)
 		return (NULL);
-	while (rd[*i] && (rd[*i] != ' ' || c != ' '))
+	while (rd[*i] && rd[*i] != ' ')
 	{
-		if (c == ' ' && (rd[*i] == '\'' || rd[*i] == '\"'))
-			c = rd[(*i)++];
-		else if (c != ' ' && rd[(*i)++] == c)
-			c = ' ';
-		else if (rd[*i] == '\\' && (*i)++)
-			cmd->str[j++] = rd[(*i)++];
-		else
-			cmd->str[j++] = rd[(*i)++];
+		// printf("in cmd rd[%i]: %c\n", *i, rd[*i]);
+		cmd->str[j++] = rd[(*i)++];
 	}
 	cmd->str[j] = '\0';
 	return (cmd);
@@ -50,13 +42,15 @@ static t_cmd	*get_start(char *rd)
 	i = 0;
 	while (rd[i])
 	{
+		// printf("in get start rd[%i]: %c\n", i, rd[i]);
 		next = next_cmd(rd, &i);
 		next->prev = prev;
 		if (prev)
 			prev->next = next;
 		prev = next;
 		type_arg(next);
-		i++;
+		if (rd[i] == ' ')
+			i++;
 	}
 	if (next)
 		next->next = NULL;
@@ -70,22 +64,29 @@ void	mini(t_b *mini)
 	t_cmd	*start;
 	t_cmd	*cmd;
 	int		status;
+	// t_cmd	*token;
 
 	// printf("Line: %s\n", mini->rd);
 	start = get_start(mini->rd);
-	cmd = next_run(start);
-	// while (cmd)
+	// token = start;
+	// while (token)
 	// {
-	// 	printf("Cmd tokens: %s\n", cmd->str);
-	// 	cmd = cmd->next;
+	// 	printf("Start tokens: %s (%i)\n", token->str, token->type);
+	// 	token = token->next;
 	// }
 	cmd = next_run(start);
+	// token = cmd;
+	// while (token)
+	// {
+	// 	printf("Cmd tokens: %s (%i)\n", token->str, token->type);
+	// 	token = token->next;
+	// }
 	reset_fds(mini);
 	mini->in = dup(0);
 	mini->out = dup(1);
 	while (cmd)
 	{
-		mini->charge = 1;
+		mini->exec = 1;
 		mini->parent = 1;
 		redir_and_exec(mini, cmd);
 		// printf("Pora to konczyc\n");

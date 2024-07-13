@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 17:11:57 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/07/12 18:37:44 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/07/13 15:33:05 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ typedef struct t_b
 	int			in;
 	int			out;
 	int			parent;
-	int			charge;
+	int			exec;
 	int			i;
 	int			max;
 	struct t_c	*cmd;
@@ -73,6 +73,8 @@ typedef struct t_b
 # define APPEND 4
 # define INPUT 5
 # define PIPE 6
+
+# define BUFF_SIZE 4096
 
 typedef struct s_cmd
 {
@@ -120,8 +122,18 @@ void	ft_close(int fd);
 void	close_fds(t_b *mini);
 void	reset_fds(t_b *mini);
 void	reset_std(t_b *mini);
-//int		is_builtin(char *command);
-//int		exec_builtin(char **args, t_b *mini);
+int		is_builtin(char *command);
+void	exec_builtin(char **args, t_b *mini);
+void	ft_echo(char **args);
+void	ft_pwd(void);
+void	ft_env(char **env);
+void	ft_cd(char **args, char **env);
+int		is_in_env(char **env, char *args);
+void	env_add(char *value, char ***env);
+void	ft_export(char **args, char **env, char **secret_env);
+void	print_sorted_env(char **env);
+int		str_env_len(char **env);
+int		sort_env(char **tb, int env_len);
 
 extern t_sig	g_sig;
 
