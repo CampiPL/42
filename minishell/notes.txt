@@ -1,0 +1,4 @@
+zwalnianie nowej zmiennej srodowiskowej
+minishell inception
+
+podzielenie funkcji
