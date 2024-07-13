@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 12:06:49 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/13 15:15:34 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/13 20:24:10 by rmakhlou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,24 +36,19 @@ void	env_add(char *value, char ***env)
 	int		i;
 
 	count = 0;
-	while (env[count])
+	while ((*env)[count])
 		count++;
-	new_env = malloc((count + 2) * sizeof(char *));
+	new_env = ft_calloc((count + 2), sizeof(char *));
 	if (!new_env)
 		return ;
 	i = 0;
 	while (i < count)
 	{
-		new_env[i] = *env[i];
+		new_env[i] = ft_strdup((*env)[i]);
 		i++;
 	}
 	new_env[count] = ft_strdup(value);
-	if (!new_env[count])
-	{
-		free(new_env);
-		return ;
-	}
-	new_env[count + 1] = NULL;
+	ft_freelst(*env);
 	*env = new_env;
 }
 
@@ -84,8 +79,7 @@ int	is_in_env(char **env, char *args)
 		get_env_name(env_name, env[i]);
 		if (strcmp(var_name, env_name) == 0)
 		{
-			env[i] = ft_strdup(args);
-			free(env[i]);
+			env[i] = args;
 			return (1);
 		}
 		i++;
@@ -93,7 +87,7 @@ int	is_in_env(char **env, char *args)
 	return (0);
 }
 
-void	ft_export(char **args, char **env, char **secret_env)
+void	ft_export(char **args, t_b *mini)
 {
 	int		new_env;
 	int		error_ret;
@@ -101,7 +95,7 @@ void	ft_export(char **args, char **env, char **secret_env)
 	new_env = 0;
 	if (!args[1])
 	{
-		print_sorted_env(secret_env);
+		print_sorted_env(mini->secret_env);
 		return ;
 	}
 	else
@@ -114,12 +108,12 @@ void	ft_export(char **args, char **env, char **secret_env)
 		if (error_ret == 2)
 			new_env = 1;
 		else
-			new_env = is_in_env(env, args[1]);
+			new_env = is_in_env(mini->env, args[1]);
 		if (new_env == 0)
 		{
 			if (error_ret == 1)
-				env_add(args[1], env);
-			env_add(args[1], secret_env);
+				env_add(args[1], &mini->env);
+			env_add(args[1], &mini->secret_env);
 		}
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 19:03:06 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/13 11:39:10 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/13 21:20:42 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ t_cmd	*next_run(t_cmd *token)
 {
 	while (token && token->type != CMD)
 	{
-		// printf("Checking token: %s\n", token->str);
 		token = token->next;
 		if (token && token->type == CMD && token->prev == NULL)
 			;

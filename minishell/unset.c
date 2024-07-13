@@ -1,41 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fd.c                                               :+:      :+:    :+:   */
+/*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/12 16:08:03 by jdepka            #+#    #+#             */
-/*   Updated: 2024/07/13 21:17:14 by jdepka           ###   ########.fr       */
+/*   Created: 2020/06/19 15:39:20 by macrespo          #+#    #+#             */
+/*   Updated: 2024/07/13 21:20:35 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_close(int fd)
+void	ft_unset(char **args, t_b *mini)
 {
-	if (fd > 0)
-		close(fd);
-}
+	char		**env;
+	char		**new_env;
+	size_t		i;
+	size_t		j;
 
-void	reset_std(t_b *mini)
-{
-	dup2(mini->in, 0);
-	dup2(mini->out, 1);
-}
-
-void	close_fds(t_b *mini)
-{
-	ft_close(mini->fdin);
-	ft_close(mini->fdout);
-	ft_close(mini->pipin);
-	ft_close(mini->pipout);
-}
-
-void	reset_fds(t_b *mini)
-{
-	mini->fdin = -1;
-	mini->fdout = -1;
-	mini->pipin = -1;
-	mini->pipout = -1;
+	if (!(args[1]))
+		return ;
+	i = 0;
+	j = 0;
+	env = mini->env;
+	new_env = ft_calloc(ft_lstlen(mini->env), sizeof(char *));
+	while (env[j])
+	{
+		if (ft_strncmp(env[j], args[1], strlen(args[1]))
+			== 0 && env[j][strlen(args[1])] == '=')
+			j++;
+		else
+			new_env[i++] = ft_strdup(env[j++]);
+	}
+	ft_freelst(mini->env);
+	mini->env = new_env;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 17:11:57 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/07/13 15:33:05 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/13 21:14:54 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,22 @@
 
 typedef struct t_c
 {
-	char	*path;
-	char	**cmd;
-	char	*builtin;
-	char	*heredoc;
-	char	*nin;
-	char	*nout;
-	int		in;
-	int		out;
+	char		*path;
+	char		**cmd;
+	char		*builtin;
+	char		*heredoc;
+	char		*nin;
+	char		*nout;
+	int			in;
+	int			out;
+	struct t_b	*orig;
 }	t_c;
 
 typedef struct t_b
 {
 	char		*rd;
 	char		**env;
+	char		**secret_env;
 	char		**penv;
 	int			lenv;
 	int			err;
@@ -105,7 +107,10 @@ void	ft_prep(t_b *tb);
 void	ft_clean(t_b *tb);
 void	mini(t_b *mini);
 char	*ft_geterrno(void);
+void	ft_seterrno(int err);
+char	**envcpy(char **env);
 
+void	ft_unset(char **args, t_b *mini);
 int		next_alloc(char *line, int *i);
 void	type_arg(t_cmd *cmd);
 int		is_type(t_cmd *cmd, int type);
@@ -130,10 +135,13 @@ void	ft_env(char **env);
 void	ft_cd(char **args, char **env);
 int		is_in_env(char **env, char *args);
 void	env_add(char *value, char ***env);
-void	ft_export(char **args, char **env, char **secret_env);
+void	ft_export(char **args, t_b *mini);
 void	print_sorted_env(char **env);
 int		str_env_len(char **env);
-int		sort_env(char **tb, int env_len);
+void	sort_env(char **tb, int env_len);
+int		is_valid_env(const char *env);
+void	redir(t_b *mini, t_cmd *cmd, int type);
+void	input(t_b *mini, t_cmd *cmd);
 
 extern t_sig	g_sig;
 

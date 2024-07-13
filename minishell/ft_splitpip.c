@@ -6,7 +6,7 @@
 /*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 12:58:39 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/07/12 12:10:52 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/07/13 21:18:43 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ char	**ft_splitpip(char *s, char c)
 	int		i;
 
 	i = 0;
-//	if (!ft_cnt(s, c))
-//		return (NULL);
 	tmp = ft_calloc(ft_cnt(s, c) + 2, sizeof(char *));
 	if (!tmp)
 		return (NULL);

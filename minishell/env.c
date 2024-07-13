@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 12:09:00 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/13 15:32:55 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/13 17:43:10 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,16 +82,16 @@ int	is_valid_env(const char *env)
 
 void	print_sorted_env(char **env)
 {
-	char	**tab;
+	char	**tb;
 	int		i;
 
-	tab = env;
-	sort_env(tab, str_env_len(tab));
+	tb = env;
+	sort_env(tb, str_env_len(tb));
 	i = 0;
-	while (tab[i])
+	while (tb[i])
 	{
-		ft_putstr("declare -x ");
-		ft_putendl(tab[i]);
+		ft_putstr_fd("declare -x ", 1);
+		ft_putendl_fd(tb[i], 1);
 		i++;
 	}
 }

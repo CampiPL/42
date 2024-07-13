@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+         #
+#    By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 10:29:43 by rmakhlou          #+#    #+#              #
-#    Updated: 2024/07/13 12:42:18 by ubuntu           ###   ########.fr        #
+#    Updated: 2024/07/13 21:11:52 by jdepka           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,8 +36,10 @@ SRC	=	minishell.c	\
 		pwd.c	\
 		cd.c	\
 		env.c	\
-		export.c
-#		ft_redir.c
+		ft_envcpy.c	\
+		export.c	\
+		unset.c	\
+		redir.c
 
 OBJ = ${SRC:.c=.o}
 

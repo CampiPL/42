@@ -6,7 +6,7 @@
 /*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 18:18:16 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/12 20:57:09 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/07/13 21:13:08 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,14 @@ static void	magic_box(char *path, char **args, t_b *mini)
 {
 	int	ret;
 
-	// printf("Jestesmy w magicznym pudelku :D!: %s\n", args[0]);
 	g_sig.pid = fork();
 	if (g_sig.pid == 0)
 	{
-		// printf("Uruchamiam komende :): %s\n", args[0]);
 		if (ft_strchr(path, '/') != NULL)
-		{
-			// printf("KOMENDA URUCHOMIONA: %s\n", args[0]);
 			execve(path, args, mini->env);
-		}
-		// printf("Tu nie docieram: %s\n", args[0]);
 	}
 	else
-	{
-		// printf("Czekam...%s\n", args[0]);
 		waitpid(g_sig.pid, &ret, 0);
-	}
-	// printf("Dotarlem do konca bin: %s\n", args[0]);
 }
 
 static char	*path_join(const char *s1, const char *s2)
@@ -75,7 +65,6 @@ void	exec_bin(char **cmdarg, t_b *mini)
 	char	*path;
 
 	i = 0;
-	// printf("Wchodzimy do magicznego pudelka?: %s\n", cmdarg[0]);
 	while (mini->env && mini->env[i]
 		&& ft_strncmp(mini->env[i], "PATH=", 5) != 0)
 		i++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 10:57:37 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/13 15:27:21 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/07/13 19:00:22 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	is_builtin(char *command)
 
 void	exec_builtin(char **args, t_b *mini)
 {
-	(void) mini;
 	if (strcmp(args[0], "echo") == 0)
 		ft_echo(args);
 	if (strcmp(args[0], "cd") == 0)
@@ -41,9 +40,7 @@ void	exec_builtin(char **args, t_b *mini)
 	if (strcmp(args[0], "env") == 0)
 		ft_env(mini->env);
 	if (strcmp(args[0], "export") == 0)
-		ft_export(args, mini->env, mini->penv);
-	/*
+		ft_export(args, mini);
 	if (strcmp(args[0], "unset") == 0)
 		ft_unset(args, mini);
-	*/
 }

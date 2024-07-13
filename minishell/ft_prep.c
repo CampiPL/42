@@ -6,7 +6,7 @@
 /*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:14:02 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/07/12 15:07:22 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/07/13 21:18:07 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,17 +109,20 @@ void	ft_prep(t_b *tb)
 	tb->cmd = ft_calloc(tb->max, sizeof(t_c));
 	while (++i < tb->max)
 	{
+		tb->cmd[i].orig = tb;
 		if (ft_cbuiltin(lst[i]))
 			tb->cmd[i].builtin = ft_redsimpl(&tb->cmd[i], lst[i]);
 		else if (ft_strlenstr(lst[i], "<>") == ft_strlen(lst[i], 0))
 		{
-			tb->cmd[i].path = ft_path(ft_substr(lst[i], 0, ft_strlen(lst[i], 32)), tb->penv);
+			tb->cmd[i].path = ft_path(ft_substr
+					(lst[i], 0, ft_strlen(lst[i], 32)), tb->penv);
 			tb->cmd[i].cmd = ft_splitpip(lst[i], 32);
 		}
 		else
 		{
 			tmp = ft_redsimpl(&tb->cmd[i], lst[i]);
-			tb->cmd[i].path = ft_path(ft_substr(tmp, 0, ft_strlen(tmp, 32)), tb->penv);
+			tb->cmd[i].path = ft_path(ft_substr
+					(tmp, 0, ft_strlen(tmp, 32)), tb->penv);
 			tb->cmd[i].cmd = ft_splitpip(tmp, 32);
 			free(tmp);
 		}

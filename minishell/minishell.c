@@ -6,7 +6,7 @@
 /*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 10:51:39 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/07/12 20:32:13 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/07/13 21:20:12 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ static void	ft_init(t_b *tb, char ***env)
 {
 	if (!*env[0] || !env)
 		*env = ft_cenv();
-	tb->env = *env;
-	tb->penv = ft_penv(*env);
+	tb->env = envcpy(*env);
+	tb->secret_env = envcpy(*env);
 	tb->lenv = ft_lstlen(*env);
 	tb->err = open("/tmp/error_val", O_RDWR | O_CREAT | O_TRUNC, 0644);
 	tb->hist = open("/tmp/history", O_RDWR | O_CREAT | O_APPEND, 0644);
@@ -59,7 +59,6 @@ static void	ft_init(t_b *tb, char ***env)
 int	main(int ac, char **av, char **env)
 {
 	t_b		tb;
-	char	**tmp;
 
 	ft_signal();
 	ft_init(&tb, &env);
@@ -69,7 +68,7 @@ int	main(int ac, char **av, char **env)
 		if (!tb.rd || !ft_strncmp("exit", tb.rd + ft_skipchar(tb.rd, 32), 5))
 		{
 			rl_clear_history();
-			ft_freebulk("slff", tb.rd, tb.penv, tb.err, tb.hist);
+			ft_freebulk("sllff", tb.rd, tb.env, tb.secret_env, tb.err, tb.hist);
 			unlink("/tmp/error_val");
 			return (0);
 		}
@@ -79,12 +78,9 @@ int	main(int ac, char **av, char **env)
 		{
 			tb.rd = ft_strsimp(tb.rd);
 			tb.rd = ft_convarg(tb.rd);
-			ft_prep(&tb);
-			tmp = ft_splitpip(tb.rd, '|');
-			sig_init();
+			tb.rd = ft_strsimp(tb.rd);
 			mini(&tb);
-			ft_clean(&tb);
-			ft_freebulk("sl", tb.rd, tmp);
+			free(tb.rd);
 		}
 	}
 }
