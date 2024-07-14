@@ -6,7 +6,7 @@
 /*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 12:08:51 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/13 21:52:21 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/07/14 14:04:35 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,11 @@ static int	update_oldpwd(char **env)
 	if (getcwd(cwd, PATH_MAX) == NULL)
 		return (1);
 	oldpwd = strjoin("OLDPWD=", cwd);
+	printf("New oldpwd: %s\n", oldpwd);
 	if (!oldpwd)
 		return (1);
 	if (is_in_env(env, oldpwd) == 0)
 		env_add(oldpwd, &env);
-	ft_memdel(oldpwd);
 	return (0);
 }
 

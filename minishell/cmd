@@ -1,2 +1,2 @@
-valgrind --suppressions=readline_leaks_1.txt --track-origins=yes --leak-check=full --show-leak-kinds=all ./Minishell
+valgrind --suppressions=readline_leaks_1.txt --track-origins=yes --leak-check=full --show-leak-kinds=all ./minishell
 ccw *.c -lreadline libft/libft.a

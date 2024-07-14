@@ -6,7 +6,7 @@
 /*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:34:38 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/13 21:14:20 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/07/14 13:24:19 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ void	redir_and_exec(t_b *mini, t_cmd *cmd)
 		redir(mini, cmd, APPEND);
 	else if (is_type(prev, INPUT))
 		input(mini, cmd);
+	else if (is_type(prev, HEREDOC))
+		heredoc(mini, cmd);
 	else if (is_type(prev, PIPE))
 		pipe = minipipe(mini);
 	if (next && pipe != 1)

@@ -6,7 +6,7 @@
 #    By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/28 10:29:43 by rmakhlou          #+#    #+#              #
-#    Updated: 2024/07/13 21:11:52 by jdepka           ###   ########.fr        #
+#    Updated: 2024/07/14 13:15:20 by jdepka           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,8 @@ SRC	=	minishell.c	\
 		ft_envcpy.c	\
 		export.c	\
 		unset.c	\
-		redir.c
+		redir.c	\
+		heredoc.c
 
 OBJ = ${SRC:.c=.o}
 
@@ -51,7 +52,7 @@ READLINE = -lreadline
 
 RM = rm -rf
 
-NAME = Minishell
+NAME = minishell
 
 LIBS = libft/libft.a 
 

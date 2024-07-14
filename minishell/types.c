@@ -6,7 +6,7 @@
 /*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 16:51:42 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/10 13:41:09 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/07/14 13:15:54 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	type_arg(t_cmd *cmd)
 		cmd->type = APPEND;
 	else if (ft_strcmp(cmd->str, "<") == 0)
 		cmd->type = INPUT;
+	else if (ft_strcmp(cmd->str, "<<") == 0)
+		cmd->type = HEREDOC;
 	else if (ft_strcmp(cmd->str, "|") == 0)
 		cmd->type = PIPE;
 	else if (cmd->prev == NULL || cmd->prev->type >= TRUNC)

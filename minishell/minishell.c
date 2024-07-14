@@ -6,7 +6,7 @@
 /*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 10:51:39 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/07/13 21:20:12 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/07/14 13:56:56 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	main(int ac, char **av, char **env)
 	ft_init(&tb, &env);
 	while (ac && av)
 	{
-		tb.rd = readline("Minishell> ");
+		tb.rd = readline("minishell> ");
 		if (!tb.rd || !ft_strncmp("exit", tb.rd + ft_skipchar(tb.rd, 32), 5))
 		{
 			rl_clear_history();

@@ -6,7 +6,7 @@
 /*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 17:11:57 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/07/13 21:24:33 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/07/14 13:16:11 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct t_b
 # define APPEND 4
 # define INPUT 5
 # define PIPE 6
+# define HEREDOC 7
 
 # define BUFF_SIZE 4096
 
@@ -144,6 +145,7 @@ void	sort_env(char **tb, int env_len);
 int		is_valid_env(const char *env);
 void	redir(t_b *mini, t_cmd *cmd, int type);
 void	input(t_b *mini, t_cmd *cmd);
+void	heredoc(t_b *mini, t_cmd *cmd);
 
 extern t_sig	g_sig;
 

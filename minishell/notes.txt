@@ -1,4 +1,5 @@
-zwalnianie nowej zmiennej srodowiskowej
+zwalnianie nowej starej sciezki (cd.c)
+zwalnianie nowej zmiennej srodowiskowej (export.c) [zwalnianie listy zmiennych srodowiskowych (ft_envcpy.c)]
 minishell inception
 
-podzielenie funkcji
+podzielenie funkcji (ft_prep.c)
