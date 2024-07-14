@@ -6,7 +6,7 @@
 /*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 17:11:57 by rmakhlou          #+#    #+#             */
-/*   Updated: 2024/07/14 13:16:11 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/07/14 17:03:36 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ void	mini(t_b *mini);
 char	*ft_geterrno(void);
 void	ft_seterrno(int err);
 char	**envcpy(char **env);
+char	*ft_path(char *cmd, char **env);
 
 void	ft_unset(char **args, t_b *mini);
 int		next_alloc(char *line, int *i);

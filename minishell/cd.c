@@ -6,7 +6,7 @@
 /*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 12:08:51 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/07/14 14:16:49 by jdepka           ###   ########.fr       */
+/*   Updated: 2024/07/14 16:55:03 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ static int	update_oldpwd(char **env)
 		return (1);
 	if (is_in_env(env, oldpwd) == 0)
 		env_add(oldpwd, &env);
+	free(oldpwd);
 	return (0);
 }
 
