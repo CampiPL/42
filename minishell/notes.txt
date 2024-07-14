@@ -1,3 +1,0 @@
-zwalnianie nowej starej sciezki (cd.c)
-
-podzielenie funkcji (ft_prep.c)
