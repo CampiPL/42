@@ -3,25 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-khni <ael-khni@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/22 12:54:28 by ael-khni          #+#    #+#             */
-/*   Updated: 2022/07/22 17:24:02ael-khni         ###   ########.fr       */
+/*   Created: 2024/08/21 18:22:50 by jdepka            #+#    #+#             */
+/*   Updated: 2024/08/21 18:23:21 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-// resource: https://www.youtube.com/watch?v=gc1Nl3mmCuY
-
-int main(void) {
-
+int main(void)
+{
     Fixed       a;
-    Fixed const b( 10 );
-    Fixed const c( 42.42f );
-    Fixed const d( b );
+    Fixed const b(10);
+    Fixed const c(42.42f);
+    Fixed const d(b);
 
-    a = Fixed( 1234.4321f );
+    a = Fixed(1234.4321f);
     std::cout << "a is " << a << std::endl;
     std::cout << "b is " << b << std::endl;
     std::cout << "c is " << c << std::endl;

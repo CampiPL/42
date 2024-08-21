@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-khni <ael-khni@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/22 12:58:30 by ael-khni          #+#    #+#             */
-/*   Updated: 2022/07/22 16:56:18 by ael-khni         ###   ########.fr       */
+/*   Created: 2024/08/21 18:23:35 by jdepka            #+#    #+#             */
+/*   Updated: 2024/08/21 18:56:09 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,26 @@
 
 class Fixed
 {
-private:
-    int                 _fixedPointValue;
-    static const int    _fractionalBits = 8;
+    private:
+        int                 fixedPointValue;
+        static const int    fractionalBits = 8;
+    
+    public:
+        Fixed(void);
+        Fixed(const int n);
+        Fixed(const float n);
+        Fixed(const Fixed &rhs);
+        Fixed& operator=(const Fixed &rhs);
+        ~Fixed();
 
-public:
-    Fixed( void );
-    Fixed( const int n );
-    Fixed( const float n );
-    Fixed( const Fixed &rhs );
-    Fixed& operator=( const Fixed &rhs );
-    ~Fixed();
+    int     getRawBits(void) const;
+    void    setRawBits(int const raw);
 
-    int     getRawBits( void ) const;
-    void    setRawBits( int const raw );
-
-    float   toFloat( void ) const;
-    int     toInt( void ) const;
+    float   toFloat(void) const;
+    int     toInt(void) const;
 
 };
 
-std::ostream & operator<<( std::ostream & o, Fixed const & i );
+std::ostream & operator<<(std::ostream & o, Fixed const & i);
 
-
-#endif  // FIXED_HPP
+#endif
