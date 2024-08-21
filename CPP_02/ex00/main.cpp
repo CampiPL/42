@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-khni <ael-khni@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: jdepka <jdepka@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/22 12:54:28 by ael-khni          #+#    #+#             */
-/*   Updated: 2022/07/22 13:50:13 by ael-khni         ###   ########.fr       */
+/*   Created: 2024/08/21 18:02:08 by jdepka            #+#    #+#             */
+/*   Updated: 2024/08/21 18:02:09 by jdepka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-int main( void )
+int main(void)
 {
     Fixed a;
-    Fixed b( a );
+    Fixed b(a);
     Fixed c;
 
     c = b;
