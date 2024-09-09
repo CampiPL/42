@@ -3,34 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-khni <ael-khni@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/24 13:21:00 by ael-khni          #+#    #+#             */
-/*   Updated: 2022/07/24 13:31:38 by ael-khni         ###   ########.fr       */
+/*   Created: 2024/09/09 19:50:08 by ubuntu            #+#    #+#             */
+/*   Updated: 2024/09/09 19:57:10 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap( std::string name ) : ClapTrap(name)
+FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
-    this->_hitPoints = 100;
-    this->_energyPoints = 100;
-    this->_attackDamage = 30;
+    this->hitPoints = 100;
+    this->energyPoints = 100;
+    this->attackDamage = 30;
 
-    std::cout << "| FragTrap | - " << this->_name << " constructed." << std::endl;
+    std::cout << "| FragTrap | - " << this->name << " constructed." << std::endl;
 }
 
 FragTrap::~FragTrap()
 {
-    std::cout << "| FragTrap | - " << this->_name << " destructed." << std::endl;
+    std::cout << "| FragTrap | - " << this->name << " destructed." << std::endl;
 }
 
-void    FragTrap::highFive( void ) {
-    if ( this->_energyPoints <= 0 ) {
-        std::cout << "| FragTrap | - " << this->_name << " is out of energy." << std::endl;
+void    FragTrap::highFive( void )
+{
+    if ( this->energyPoints <= 0 )
+    {
+        std::cout << "| FragTrap | - " << this->name << " is out of energy." << std::endl;
         return;
     }
-    std::cout << "| FragTrap | - " << this->_name << " high fives everybody." << std::endl;
-    this->_energyPoints -= 1;
+    std::cout << "| FragTrap | - " << this->name << " high fives everybody." << std::endl;
+    this->energyPoints -= 1;
 }
