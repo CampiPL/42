@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-khni <ael-khni@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/24 13:35:15 by ael-khni          #+#    #+#             */
-/*   Updated: 2022/07/24 15:09:35 by ael-khni         ###   ########.fr       */
+/*   Created: 2024/09/09 20:16:04 by ubuntu            #+#    #+#             */
+/*   Updated: 2024/09/09 20:16:05 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@
 
 class DiamondTrap : public FragTrap, public ScavTrap
 {
-private:
-    std::string _name;
+    private:
+        std::string name;
 
-public:
-    DiamondTrap( std::string name );
-    ~DiamondTrap();
+    public:
+        DiamondTrap(std::string name);
+        ~DiamondTrap();
 
-    using   ScavTrap::attack;
-    void    whoAmI( void );
+        using   ScavTrap::attack;
+        void    whoAmI(void);
 };
 
-#endif // DIAMONDTRAP_HPP
+#endif

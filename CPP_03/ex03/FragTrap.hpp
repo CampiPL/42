@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-khni <ael-khni@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/24 13:21:04 by ael-khni          #+#    #+#             */
-/*   Updated: 2022/07/24 13:38:39 by ael-khni         ###   ########.fr       */
+/*   Created: 2024/09/09 20:17:07 by ubuntu            #+#    #+#             */
+/*   Updated: 2024/09/09 20:17:08 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 
 class FragTrap : virtual public ClapTrap
 {
-private:
-    FragTrap();
+    private:
+        FragTrap();
 
-public:
-    FragTrap(std::string name);
-    ~FragTrap();
+    public:
+        FragTrap(std::string name);
+        ~FragTrap();
 
-    void    highFive( void );
+        void    highFive(void);
 };
 
-#endif // FRAGTRAP_HPP
+#endif
