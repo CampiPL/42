@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-khni <ael-khni@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/23 18:11:45 by ael-khni          #+#    #+#             */
-/*   Updated: 2022/07/24 12:38:48 by ael-khni         ###   ########.fr       */
+/*   Created: 2024/09/09 19:37:15 by ubuntu            #+#    #+#             */
+/*   Updated: 2024/09/09 19:40:45 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,24 @@
 
 class ClapTrap
 {
-protected:
-    std::string     _name;
-    unsigned int    _hitPoints;
-    unsigned int    _energyPoints;
-    unsigned int    _attackDamage;
+    protected:
+        std::string     name;
+        unsigned int    hitPoints;
+        unsigned int    energyPoints;
+        unsigned int    attackDamage;
 
-    ClapTrap();
+        ClapTrap();
 
-public:
-    ClapTrap( std::string name );
-    ~ClapTrap();
+    public:
+        ClapTrap(std::string name);
+        ~ClapTrap();
 
-    ClapTrap(const ClapTrap &);
-    ClapTrap&       operator=(const ClapTrap& rhs);
+        ClapTrap(const ClapTrap &);
+        ClapTrap&operator=(const ClapTrap& rhs);
 
-    void            attack(std::string const& target);
-    void            takeDamage(unsigned int amount);
-    void            beRepaired(unsigned int amount);
-
+        void            attack(std::string const& target);
+        void            takeDamage(unsigned int amount);
+        void            beRepaired(unsigned int amount);
 };
 
-#endif // CLAPTRAP_HPP
+#endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                      :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-khni <ael-khni@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/23 19:57:02 by ael-khni          #+#    #+#             */
-/*   Updated: 2022/07/24 11:41:50 by ael-khni         ###   ########.fr       */
+/*   Created: 2024/09/09 19:37:35 by ubuntu            #+#    #+#             */
+/*   Updated: 2024/09/09 19:43:00 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@
 
 class ScavTrap : public ClapTrap
 {
-private:
-    ScavTrap();
+    private:
+        ScavTrap();
 
-public:
-    ScavTrap( std::string name );
-    ~ScavTrap();
+    public:
+        ScavTrap(std::string name);
+        ~ScavTrap();
 
-    void    attack(std::string const& target);
-    void    guardGate();
+        void    attack(std::string const& target);
+        void    guardGate();
 };
 
-#endif // SCAVTRAP_HPP
+#endif
