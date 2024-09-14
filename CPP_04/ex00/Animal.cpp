@@ -6,13 +6,13 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 20:46:43 by ubuntu            #+#    #+#             */
-/*   Updated: 2024/09/14 20:48:58 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/09/14 21:02:42 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 
-Animal::Animal(void) : type("Animel")
+Animal::Animal(void) : type("Animal")
 {
     std::cout << this->type << " constructor called" << std::endl;
 }
